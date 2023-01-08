@@ -8,6 +8,8 @@ FROM $BUILD_FROM
 COPY --from=deno /deno /usr/local/bin/deno
 
 COPY run.sh /
+COPY deno.lock /
+COPY run.ts /
 
 RUN chmod a+x /run.sh
 

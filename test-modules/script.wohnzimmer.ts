@@ -5,7 +5,7 @@ import {
   useStateForDuration,
   mapState,
   useBrightness,
-} from "../src/mod.ts";
+} from "../reactive_home/src/mod.ts";
 
 // const epoWohnzimmer = useState("input_boolean.wohnzimmer_simulate_epo");
 const epoWohnzimmer = useState("binary_sensor.occupancy");
