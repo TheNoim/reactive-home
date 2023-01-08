@@ -1,5 +1,12 @@
 
 
+## [0.0.8](https://github.com/TheNoim/reactive-home/compare/0.0.7...0.0.8) (2023-01-08)
+
+
+### Bug Fixes
+
+* import map ([f64002a](https://github.com/TheNoim/reactive-home/commit/f64002a30918c01ffd6a970c619f5c868863b873))
+
 ## [0.0.7](https://github.com/TheNoim/reactive-home/compare/0.0.6...0.0.7) (2023-01-08)
 
 
