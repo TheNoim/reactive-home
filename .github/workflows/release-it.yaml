@@ -15,7 +15,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   publish:
-    runs-on: macos-11
+    runs-on: ubuntu-latest
 
     if: "!startsWith(github.event.head_commit.message, 'chore(release): ')"
 
@@ -37,6 +37,6 @@ jobs:
         run: npm install
 
       - name: Release It
-        run: npm run release --ci
+        run: npm run release
         env:
           GITHUB_TOKEN: ${{ github.token }}
