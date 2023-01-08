@@ -1,5 +1,12 @@
 
 
+## [0.0.7](https://github.com/TheNoim/reactive-home/compare/0.0.6...0.0.7) (2023-01-08)
+
+
+### Bug Fixes
+
+* base image version ([14f8c02](https://github.com/TheNoim/reactive-home/commit/14f8c026018040a7d660eb9f239492453f88bfcb))
+
 ## [0.0.6](https://github.com/TheNoim/reactive-home/compare/0.0.5...0.0.6) (2023-01-08)
 
 
