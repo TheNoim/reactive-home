@@ -1,0 +1,15 @@
+name: "Reactive Home"
+description: "Reactive home automation runtime for home assistant"
+version: "1.0.0"
+slug: "reactive_home"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+homeassistant_api: true
+map:
+  - config:ro
+  - addons:rw # save deno cache here

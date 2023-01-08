@@ -1,0 +1,12 @@
+{
+    "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+    "fmt": {
+        "options": {
+            "indentWidth": 4
+        }
+    },
+    "tasks": {
+        "run": "deno run --allow-read --allow-env='NODE_ENV' --allow-net index.ts",
+        "watch": "deno run --watch --allow-env='NODE_ENV' --allow-read --allow-net index.ts"
+    }
+}
