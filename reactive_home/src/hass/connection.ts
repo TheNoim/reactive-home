@@ -9,11 +9,14 @@ import {
 let { HASS_URL, HASS_LONG_LIVED_TOKEN } = dotenvConfig();
 
 if (!HASS_URL) {
-  HASS_URL = await CliffyInput.prompt("Hass url:");
+  HASS_URL =
+    Deno.env.get("HASS_URL") ?? (await CliffyInput.prompt("Hass url:"));
 }
 
 if (!HASS_LONG_LIVED_TOKEN) {
-  HASS_LONG_LIVED_TOKEN = await CliffyInput.prompt("Hass long lived token:");
+  HASS_LONG_LIVED_TOKEN =
+    Deno.env.get("HASS_LONG_LIVED_TOKEN") ??
+    (await CliffyInput.prompt("Hass long lived token:"));
 }
 
 export const url = HASS_URL;
