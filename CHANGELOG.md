@@ -1,5 +1,12 @@
 
 
+## [0.0.10](https://github.com/TheNoim/reactive-home/compare/0.0.9...0.0.10) (2023-01-08)
+
+
+### Bug Fixes
+
+* use Deno.env as fallback ([733a183](https://github.com/TheNoim/reactive-home/commit/733a18370b2c222bff23f897a78193c851da47e2))
+
 ## [0.0.9](https://github.com/TheNoim/reactive-home/compare/0.0.8...0.0.9) (2023-01-08)
 
 
