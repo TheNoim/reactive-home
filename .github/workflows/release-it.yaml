@@ -25,6 +25,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          token: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Configuring Git and NPM
         run: |
@@ -41,4 +42,4 @@ jobs:
       - name: Release It
         run: npm run release
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
