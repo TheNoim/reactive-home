@@ -36,7 +36,7 @@ jobs:
           node-version: "18"
 
       - name: Installing dependencies
-        run: npm install
+        run: npm ci
 
       - name: Release It
         run: npm run release
