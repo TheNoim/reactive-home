@@ -21,6 +21,10 @@ async function executeScripts(abort: AbortSignal) {
       continue;
     }
 
+    if (path.path.includes(".deno")) {
+      continue;
+    }
+
     const fileName = basename(path.path);
 
     if (!/script\..+\.ts/gm.test(fileName)) {
@@ -77,6 +81,10 @@ for await (const event of watcher) {
   }
 
   if (!event.paths.some((value) => /script\..+\.ts/gm.test(basename(value)))) {
+    continue;
+  }
+
+  if (event.paths.some((value) => value.includes(".deno"))) {
     continue;
   }
 
