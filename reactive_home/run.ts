@@ -29,17 +29,29 @@ async function executeScripts(abort: AbortSignal) {
 
     console.info("Load script", path.path);
 
+    const args = [
+      "deno",
+      "run",
+      `--lock=${join(flags.root, "deno.lock")}`,
+      "--allow-read",
+      `--allow-env=NODE_ENV,HASS_LONG_LIVED_TOKEN,HASS_URL`,
+      "--allow-net",
+      "--unstable", // npm import
+    ];
+
+    const importMapPath = join(flags.root, "import_map.json");
+
+    try {
+      const fileInfo = Deno.statSync(importMapPath);
+
+      if (fileInfo && fileInfo.isFile) {
+        args.push(`--import-map=${importMapPath}`);
+      }
+      // deno-lint-ignore no-empty
+    } catch {}
+
     const process = Deno.run({
-      cmd: [
-        "deno",
-        "run",
-        `--lock=${join(flags.root, "deno.lock")}`,
-        "--allow-read",
-        `--allow-env=NODE_ENV,HASS_LONG_LIVED_TOKEN,HASS_URL`,
-        "--allow-net",
-        "--unstable", // npm import
-        path.path,
-      ],
+      cmd: [...args, path.path],
     });
 
     abort.addEventListener("abort", () => {
