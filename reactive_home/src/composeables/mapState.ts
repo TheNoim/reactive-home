@@ -47,23 +47,22 @@ export function mapState(config: MapStateConfig) {
 
   // Detect human overwrite
   watch(
-    () => entityHassState.value,
-    (newValue, oldValue) => {
+    [
+      () => entityHassState.computedBool,
+      () => entityHassState.computedLightPct,
+    ],
+    ([newValue, newLightValue], [oldValue, oldLightValue]) => {
       // Skip initial state
-      if (!oldValue) {
+      if (!oldValue || oldLightValue < 0 || newLightValue < 0) {
         return;
       }
 
-      if (!newValue?.state) {
-        return;
-      }
-
-      if (stringBoolToBool(newValue.state!) !== unref(config.desiredState)) {
+      if (newValue !== unref(config.desiredState)) {
         if (config.debug) {
-          console.log(
+          console.error(
             `State was overwritten by a humen for ${
               config.entity
-            }. Expected ${stringBoolToBool(newValue.state!)} and got ${unref(
+            }. Expected ${stringBoolToBool(newValue)} and got ${unref(
               config.desiredState
             )}`
           );
@@ -73,21 +72,15 @@ export function mapState(config: MapStateConfig) {
         }
       }
 
-      if (
-        config.desiredBrightness &&
-        newValue.attributes?.brightness &&
-        stringBoolToBool(newValue.state!)
-      ) {
-        if (
-          unref(config.desiredBrightness) !== newValue.attributes.brightness
-        ) {
+      if (config.desiredBrightness && newValue) {
+        if (unref(config.desiredBrightness) !== newLightValue) {
           if (config.debug) {
-            console.log(
+            console.error(
               `Brightness was overwritten by a humen for ${
                 config.entity
-              }. Expected ${unref(config.desiredBrightness)} and got ${
-                newValue.attributes.brightness
-              }`
+              }. Expected ${unref(
+                config.desiredBrightness
+              )} and got ${newLightValue}`
             );
           }
           if (overwriteBrightnessEntityHassState) {
@@ -191,17 +184,14 @@ export function mapState(config: MapStateConfig) {
       () => unref(config.desiredState),
       () => entityHassState.bool,
     ],
-    () => {
+    ([stateOutOfSync, brightnessOutOfSync, desiredState, bool]) => {
       if (config.debug) {
-        console.log(
-          `debug(${config.entity}): stateOutOfSync=${
-            stateOutOfSync.value
-          } brightnessOutOfSync=${
-            brightnessOutOfSync.value
-          } desiredState=${stringBoolToBool(
-            unref(config.desiredState)
-          )} entityHassState=${entityHassState.bool}`
-        );
+        console.log(`debug(${config.entity}): `, {
+          stateOutOfSync,
+          brightnessOutOfSync,
+          desiredState,
+          bool,
+        });
       }
     }
   );
@@ -230,7 +220,7 @@ export function mapState(config: MapStateConfig) {
         console.log(
           `entityHassState.lightPct(${config.entity}) = ${unref(
             config.desiredBrightness
-          )}`
+          )} (current === ${entityHassState.lightPct})`
         );
       }
       if (config.desiredBrightness) {

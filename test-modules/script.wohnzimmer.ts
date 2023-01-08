@@ -7,8 +7,8 @@ import {
   useBrightness,
 } from "../reactive_home/src/mod.ts";
 
-// const epoWohnzimmer = useState("input_boolean.wohnzimmer_simulate_epo");
-const epoWohnzimmer = useState("binary_sensor.occupancy");
+const epoWohnzimmer = useState("input_boolean.wohnzimmer_simulate_epo");
+// const epoWohnzimmer = useState("binary_sensor.occupancy");
 const motionWohnzimmer = useState("binary_sensor.0x00124b00250907a0_occupancy");
 const motionWohnzimmerOnFor20Sec = useStateForDuration(
   "binary_sensor.0x00124b00250907a0_occupancy",
@@ -44,18 +44,13 @@ const lightShouldBeOn = computed(() => {
   return motionWohnzimmer.value?.state === "on";
 });
 
-// mapBooleanToLight(lightShouldBeOn, "light.0x8cf681fffe01c005", {
-//   reSyncAfter: 1000 * 60 * 60,
-//   debug: true,
-// });
-
-// watch(lightShouldBeOn, (newValue) => console.log(newValue));
-
 const brightness = useBrightness();
 
 watch(
-  () => brightness.value,
-  (newBrightness) => console.log({ newBrightness }),
+  [() => lightShouldBeOn.value, () => brightness.value],
+  ([newValue, newBrightness]) => {
+    console.log({ newValue, newBrightness });
+  },
   { immediate: true }
 );
 
@@ -71,3 +66,17 @@ mapState({
     "input_text.wohnzimmer_disableauto_state_brightness"
   ),
 });
+
+// mapState({
+//   entity: "light.kueche",
+//   desiredState: lightShouldBeOn,
+//   desiredBrightness: brightness,
+//   debug: true,
+//   overwriteEntity: "input_boolean.kuche_deckenlicht_disableauto_state",
+//   overwriteBrightnessEntity:
+//     "input_boolean.kuche_deckenlicht_disableauto_brightness",
+//   overwriteReset: useState("input_text.wohnzimmer_disableauto_statetime"),
+//   overwriteBrightnessReset: useState(
+//     "input_text.wohnzimmer_disableauto_state_brightness"
+//   ),
+// });

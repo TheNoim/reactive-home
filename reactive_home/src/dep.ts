@@ -10,7 +10,11 @@ export {
   onScopeDispose,
 } from "npm:@vue/reactivity@3.2.45";
 
-export type { Ref, UnwrapNestedRefs, ComputedRef } from "npm:@vue/reactivity@3.2.45";
+export type {
+  Ref,
+  UnwrapNestedRefs,
+  ComputedRef,
+} from "npm:@vue/reactivity@3.2.45";
 
 export {
   useNow,
@@ -20,7 +24,7 @@ export {
   watchDebounced,
 } from "npm:@vueuse/core@9.8.1";
 
-export { watch } from "npm:@vue-reactivity/watch@0.2.0";
+export { watch } from "npm:@vue/runtime-core@3.2.45";
 
 export { config as dotenvConfig } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
 
