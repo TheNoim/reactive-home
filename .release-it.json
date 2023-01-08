@@ -23,5 +23,8 @@
                 "replace": "version: \"{{version}}\""
             }
         }
+    },
+    "npm": {
+        "publish": false
     }
 }
