@@ -1,0 +1,6 @@
+{
+    "devDependencies": {
+        "@j-ulrich/release-it-regex-bumper": "^4.1.1",
+        "release-it": "^15.6.0"
+    }
+}

@@ -57,7 +57,9 @@ jobs:
   build:
     needs: init
     runs-on: ubuntu-latest
-    if: needs.init.outputs.changed == 'true'
+    if: |
+      needs.init.outputs.changed == 'true' &&
+      startsWith(github.event.head_commit.message, 'chore(release): ')
     name: Build ${{ matrix.arch }} ${{ matrix.addon }} add-on
     strategy:
       matrix:
