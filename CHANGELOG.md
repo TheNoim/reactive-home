@@ -1,5 +1,12 @@
 
 
+## [0.0.9](https://github.com/TheNoim/reactive-home/compare/0.0.8...0.0.9) (2023-01-08)
+
+
+### Bug Fixes
+
+* recursive deno cache ([52a9ddf](https://github.com/TheNoim/reactive-home/commit/52a9ddf2827763382463daa65c1b2ea0747b361e))
+
 ## [0.0.8](https://github.com/TheNoim/reactive-home/compare/0.0.7...0.0.8) (2023-01-08)
 
 
