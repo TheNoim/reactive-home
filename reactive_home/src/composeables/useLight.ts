@@ -1,40 +1,50 @@
 import { useState } from "./useState.ts";
 import { ref, watch, computed } from "../dep.ts";
-import { extendRef, watchDebounced } from "../dep.ts";
-import { auth, createApiCall } from "../hass/connection.ts";
+import { extendRef } from "../dep.ts";
+import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
-import type { Ref, UnwrapNestedRefs } from "../dep.ts";
+import type { Ref, UnwrapNestedRefs, HassEntity, MessageBase } from "../dep.ts";
 
 export function useLight(entity: string, debug = false) {
   const state = useState(entity);
 
+  const skipContexts: string[] = [];
+
   // Sync state to hass
   async function set(newValue: boolean, light = 255) {
-    const payload = JSON.stringify({
-      entity_id: entity,
-      ...(newValue
-        ? { brightness: light < 0 ? (newValue ? 255 : 0) : light + 1 }
-        : {}),
-    });
-    const callServiceUrl = createApiCall(
-      `/api/services/${state.value?.entity_id?.split(".").at(0)}/turn_${
-        newValue ? "on" : "off"
-      }`
-    );
-    if (debug) {
-      console.log(`call_service(${entity}): `, {
-        callServiceUrl: callServiceUrl,
-        payload,
-      });
+    if (state.value && stringBoolToBool(state.value?.state) === newValue) {
+      if (newValue && light === state.value.attributes.brightness) {
+        return;
+      } else if (!newValue) {
+        return;
+      }
     }
-    await fetch(callServiceUrl, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${auth.accessToken}`,
+
+    const payload = {
+      type: "call_service",
+      domain: (state.value?.entity_id ?? entity).split(".").at(0),
+      service: `turn_${newValue ? "on" : "off"}`,
+      target: {
+        entity_id: entity,
       },
-      body: payload,
-    });
+      service_data:
+        newValue && light > 0
+          ? {
+              brightness: light,
+            }
+          : {},
+    } satisfies MessageBase;
+
+    if (debug) {
+      console.log(`call_service(${entity}): `, payload);
+    }
+
+    const result: { context: HassEntity["context"] } =
+      await connection.sendMessagePromise(payload);
+
+    if (result?.context?.id) {
+      skipContexts.push(result.context.id);
+    }
   }
 
   const bool: Ref<boolean> = ref(false);
@@ -54,17 +64,25 @@ export function useLight(entity: string, debug = false) {
         (newValue?.attributes?.brightness &&
           newValue?.attributes.brightness !== lightPct.value)
       ) {
+        const contextIndex = skipContexts.findIndex(
+          (value) => value === newValue.context.id
+        );
+
+        if (contextIndex > -1) {
+          if (debug) {
+            console.log(`skipContexts(${entity}): ${newValue.context.id}`);
+          }
+          skipContexts.splice(contextIndex, 1);
+          return;
+        }
+
         if (newValue.state && bool.value !== stringBoolToBool(newValue.state)) {
-          skipNextWatch = true;
-          // console.log("New bool", stringBoolToBool(newValue.state));
           bool.value = stringBoolToBool(newValue.state);
         }
         if (
           newValue.attributes?.brightness &&
           lightPct.value !== newValue.attributes.brightness
         ) {
-          skipNextWatch = true;
-          // console.log("New lightPct", newValue.attributes.brightness);
           lightPct.value = newValue.attributes.brightness;
         }
       }
@@ -73,11 +91,11 @@ export function useLight(entity: string, debug = false) {
 
   watch([computedBool, computedLightPct], ([boolVal, lightVal]) => {
     if (skipNextWatch) {
-      // console.log("skipNextWatch was true");
+      console.log("skipNextWatch was true");
       skipNextWatch = false;
       return;
     } else {
-      // console.log("No skipNextWatch", { boolVal, lightVal });
+      console.log("No skipNextWatch", { boolVal, lightVal });
     }
     set(boolVal as boolean, lightVal as number);
   });

@@ -1,7 +1,7 @@
 import { useState } from "./useState.ts";
 import { computed, extendRef, refAutoReset } from "../dep.ts";
-import { auth, createApiCall } from "../hass/connection.ts";
-import type { Ref, UnwrapNestedRefs } from "../dep.ts";
+import { connection } from "../hass/connection.ts";
+import type { Ref, UnwrapNestedRefs, MessageBase, HassEntity } from "../dep.ts";
 
 /**
  * Switch device helper function. If a device supports only on and off, this can help manage this device as simple boolean.
@@ -12,30 +12,26 @@ import type { Ref, UnwrapNestedRefs } from "../dep.ts";
 export function useBoolean(entity: string, debug = false) {
   const state = useState(entity);
 
-  async function set(newValue: boolean) {
-    const callServiceUrl = createApiCall(
-      `/api/services/${state.value?.entity_id?.split(".").at(0)}/turn_${
-        newValue ? "on" : "off"
-      }`
-    );
-    if (debug) {
-      console.log(`call_service(${entity}): `, {
-        callServiceUrl: callServiceUrl,
-      });
-    }
-    await fetch(callServiceUrl, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${auth.accessToken}`,
-      },
-      body: JSON.stringify({
-        entity_id: entity,
-      }),
-    });
-  }
-
   const localBool: Ref<null | boolean> = refAutoReset(null, 5000);
+
+  async function set(newValue: boolean) {
+    const payload = {
+      type: "call_service",
+      domain: (state.value?.entity_id ?? entity).split(".").at(0),
+      service: `turn_${newValue ? "on" : "off"}`,
+      target: {
+        entity_id: entity,
+      },
+    } satisfies MessageBase;
+
+    if (debug) {
+      console.log(`call_service(${entity}): `, payload);
+    }
+
+    await connection.sendMessagePromise(payload);
+
+    localBool.value = null;
+  }
 
   const bool: Ref<boolean> = computed({
     get() {

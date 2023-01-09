@@ -3,7 +3,13 @@ import type { MaybeComputed } from "./types.ts";
 import { computed, unref } from "../dep.ts";
 
 export type UseBrightnessOptions = {
+  /**
+   * A value between 0 and 255
+   */
   minBrigthness?: number;
+  /**
+   * A value between 0 and 255
+   */
   maxBrigthness?: number;
 };
 
@@ -20,8 +26,8 @@ export function useBrightness(
 
     const opt = unref(options);
 
-    const maxBrigthness = opt.maxBrigthness ?? 1;
-    const minBrightness = opt.minBrigthness ?? 0.2;
+    const maxBrigthness = opt.maxBrigthness ?? 255;
+    const minBrightness = opt.minBrigthness ?? 51;
 
     if (sunPercent > 0) {
       return maxBrigthness;
@@ -31,6 +37,8 @@ export function useBrightness(
 
     const percent = 1 + sunPercent;
 
-    return Math.trunc((deltaBrightness * percent + minBrightness) * 255);
+    return Math.trunc(
+      ((deltaBrightness / 255) * percent + minBrightness / 255) * 255
+    );
   });
 }

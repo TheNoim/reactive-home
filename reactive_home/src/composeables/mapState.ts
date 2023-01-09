@@ -53,8 +53,21 @@ export function mapState(config: MapStateConfig) {
     ],
     ([newValue, newLightValue], [oldValue, oldLightValue]) => {
       // Skip initial state
-      if (!oldValue || oldLightValue < 0 || newLightValue < 0) {
+      if (typeof oldValue !== "boolean" || typeof oldLightValue !== "number") {
+        if (config.debug) {
+          console.log(`computed_change(${config.entity}): skip `, {
+            newValue,
+            newLightValue,
+          });
+        }
         return;
+      }
+
+      if (config.debug) {
+        console.log(`computed_change(${config.entity}): `, {
+          newValue,
+          newLightValue,
+        });
       }
 
       if (newValue !== unref(config.desiredState)) {
