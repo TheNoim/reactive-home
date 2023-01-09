@@ -1,5 +1,12 @@
 
 
+## [0.0.12](https://github.com/TheNoim/reactive-home/compare/0.0.11...0.0.12) (2023-01-09)
+
+
+### Bug Fixes
+
+* some bugs ([9ca2fa6](https://github.com/TheNoim/reactive-home/commit/9ca2fa68260357648fb3b0b7643621c155f0709d))
+
 ## [0.0.11](https://github.com/TheNoim/reactive-home/compare/0.0.10...0.0.11) (2023-01-08)
 
 
