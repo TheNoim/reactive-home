@@ -1,5 +1,12 @@
 
 
+## [0.2.6](https://github.com/TheNoim/reactive-home/compare/0.2.5...0.2.6) (2023-01-18)
+
+
+### Bug Fixes
+
+* resubmit ([c9009f0](https://github.com/TheNoim/reactive-home/commit/c9009f00995ae181b3b7a68dedb7070cc1ae2898))
+
 ## [0.2.5](https://github.com/TheNoim/reactive-home/compare/0.2.4...0.2.5) (2023-01-18)
 
 
