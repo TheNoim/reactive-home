@@ -1,5 +1,12 @@
 
 
+# [0.2.0](https://github.com/TheNoim/reactive-home/compare/0.1.4...0.2.0) (2023-01-18)
+
+
+### Features
+
+* add useNewStateForDuration ([d17e31a](https://github.com/TheNoim/reactive-home/commit/d17e31a2f2db6a1a9da105ba4d3ba76f9ba4d704))
+
 ## [0.1.4](https://github.com/TheNoim/reactive-home/compare/0.1.3...0.1.4) (2023-01-18)
 
 ## [0.1.3](https://github.com/TheNoim/reactive-home/compare/0.1.2...0.1.3) (2023-01-18)
