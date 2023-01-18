@@ -51,7 +51,9 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
   const { pause, resume } = watchPausable(
     localValue,
     (newLocalValue: typeof localValue.value) => {
-      console.log({ newLocalValue, entity: state.value.entity_id });
+      if (debug) {
+        console.log(`call(${state.value.entity_id}): updateHASSState`);
+      }
       updateHASSState(newLocalValue);
     }
   );
