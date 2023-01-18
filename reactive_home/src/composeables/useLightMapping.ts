@@ -93,8 +93,11 @@ export function useLightMapping({
     if (isDisabled?.value) {
       return -1;
     }
-    if (entity.value !== unref(expectedValue)) {
-      return now.value.getTime() - entity.lastChanged.getTime();
+    if (
+      entity.value !== unref(expectedValue) &&
+      /** Just use this as clock source, not for the actual calculation, because it might be behind */ now.value
+    ) {
+      return new Date().getTime() - entity.lastChanged.getTime();
     }
     return -1;
   });
@@ -106,9 +109,11 @@ export function useLightMapping({
     if (
       entity.value &&
       expectedBrightness &&
-      entity.brightness !== unref(expectedBrightness)
+      entity.brightness !== unref(expectedBrightness) &&
+      /** Just use this as clock source, not for the actual calculation, because it might be behind */
+      now.value
     ) {
-      return now.value.getTime() - entity.lastChanged.getTime();
+      return new Date().getTime() - entity.lastChanged.getTime();
     }
     return -1;
   });
@@ -139,7 +144,8 @@ export function useLightMapping({
         }
         entity.brightness = expectedBrightnessValue;
       }
-    }
+    },
+    { immediate: true }
   );
 }
 
@@ -172,7 +178,6 @@ export function parseAutoEnableTimeFactory(
     if (typeof value === "object") {
       value = value.state;
     }
-    console.log({ value, input });
     return parse(value, "ms");
   });
 }
@@ -194,13 +199,17 @@ export function shouldReEnableSinceFactory(
       return -1;
     }
 
+    /** Just use this as clock source, not for the actual calculation, because it might be behind */
     const now = unref(nowSource);
+    if (!now) {
+      return -1;
+    }
 
     const resetTime = unref(resetTimeSource);
 
     const lastChanged = entity.lastChanged;
 
-    const diffDate = subMilliseconds(now, resetTime);
+    const diffDate = subMilliseconds(new Date(), resetTime);
 
     if (lastChanged < diffDate) {
       return diffDate.getTime() - lastChanged.getTime();

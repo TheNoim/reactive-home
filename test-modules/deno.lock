@@ -75,7 +75,7 @@
     "specifiers": {
       "@vue/reactivity@3.2.45": "@vue/reactivity@3.2.45",
       "@vue/runtime-core@3.2.45": "@vue/runtime-core@3.2.45",
-      "@vueuse/core@9.11.0": "@vueuse/core@9.11.0",
+      "@vueuse/core@9.10.0": "@vueuse/core@9.10.0",
       "date-fns@2.29.3": "date-fns@2.29.3",
       "home-assistant-js-websocket@8.0.1": "home-assistant-js-websocket@8.0.1",
       "suncalc3@2.0.5": "suncalc3@2.0.5"
@@ -168,21 +168,21 @@
         "integrity": "sha512-Ewzq5Yhimg7pSztDV+RH1UDKBzmtqieXQlpTVm2AwraoRL/Rks96mvd8Vgi7Lj+h+TH8dv7mXD3FRZR3TUvbSg==",
         "dependencies": {}
       },
-      "@vueuse/core@9.11.0": {
-        "integrity": "sha512-7yZJ8LNOssA8ZmeSjd4F+wbFBA4csiP4TiaXgruqg1H4PAtzSkv93PPwFLvQkSnfo3Bar+e+6QoRvWjhz7l2Xg==",
+      "@vueuse/core@9.10.0": {
+        "integrity": "sha512-CxMewME07qeuzuT/AOIQGv0EhhDoojniqU6pC3F8m5VC76L47UT18DcX88kWlP3I7d3qMJ4u/PD8iSRsy3bmNA==",
         "dependencies": {
           "@types/web-bluetooth": "@types/web-bluetooth@0.0.16",
-          "@vueuse/metadata": "@vueuse/metadata@9.11.0",
-          "@vueuse/shared": "@vueuse/shared@9.11.0",
+          "@vueuse/metadata": "@vueuse/metadata@9.10.0",
+          "@vueuse/shared": "@vueuse/shared@9.10.0",
           "vue-demi": "vue-demi@0.13.11"
         }
       },
-      "@vueuse/metadata@9.11.0": {
-        "integrity": "sha512-HhtG2SWkcfZBLbamHdvLn7jKOCFpw/ifXjVTd5ilFkj98WVUk/3UTQ03wF1XIkuhSO4+b45hD2lfG9/GdKCF7w==",
+      "@vueuse/metadata@9.10.0": {
+        "integrity": "sha512-G5VZhgTCapzU9rv0Iq2HBrVOSGzOKb+OE668NxhXNcTjUjwYxULkEhAw70FtRLMZc+hxcFAzDZlKYA0xcwNMuw==",
         "dependencies": {}
       },
-      "@vueuse/shared@9.11.0": {
-        "integrity": "sha512-8lO7wD5abYxupKy2KynH1pSgP715ky6iCrWYb8aX2AuAVi9uHXj7qE1dw6BnmArSaLHci4x9iuzWPCpAzUkC/A==",
+      "@vueuse/shared@9.10.0": {
+        "integrity": "sha512-vakHJ2ZRklAzqmcVBL38RS7BxdBA4+5poG9NsSyqJxrt9kz0zX3P5CXMy0Hm6LFbZXUgvKdqAS3pUH1zX/5qTQ==",
         "dependencies": { "vue-demi": "vue-demi@0.13.11" }
       },
       "csstype@2.6.21": {
