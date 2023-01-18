@@ -24,7 +24,7 @@ export {
   watchDebounced,
   useDebounceFn,
   watchPausable,
-} from "npm:@vueuse/core@9.11.0";
+} from "npm:@vueuse/core@9.10.0";
 
 export { watch } from "npm:@vue/runtime-core@3.2.45";
 
