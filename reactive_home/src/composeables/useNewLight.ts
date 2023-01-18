@@ -58,12 +58,18 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
     lock: false,
   });
 
+  let skipNextWatch = false;
+
   // Local state changes
   watch(
     () => {
       return { value: localValues.value, brightness: localValues.brightness };
     },
     (newLocalValues, oldLocalValues) => {
+      if (skipNextWatch) {
+        skipNextWatch = false;
+        return;
+      }
       if (
         newLocalValues.value === oldLocalValues.value &&
         newLocalValues.brightness === oldLocalValues.brightness
@@ -101,6 +107,7 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
         skipContexts.splice(contextIndex, 1);
         return;
       }
+      skipNextWatch = true;
       localValues.value = stringBoolToBool(newEntityState.state);
       localValues.brightness = getBrightnessFromAttribute(newEntityState);
     }

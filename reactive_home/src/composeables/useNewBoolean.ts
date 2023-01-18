@@ -32,11 +32,15 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
   }, 50);
 
   const localValue = ref(stringBoolToBool(state.value.state));
-
+  let skipNextWatch = false;
   const lastChanged = ref(state.value.last_changed);
 
   // Local state changes
   watch(localValue, (newLocalValue, oldLocalValue) => {
+    if (skipNextWatch) {
+      skipNextWatch = false;
+      return;
+    }
     if (newLocalValue === oldLocalValue) {
       return;
     }
@@ -58,6 +62,7 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
         skipContexts.splice(contextIndex, 1);
         return;
       }
+      skipNextWatch = true;
       localValue.value = stringBoolToBool(newEntityState.state);
       lastChanged.value = newEntityState.last_changed;
     }
