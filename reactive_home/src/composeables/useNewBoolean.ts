@@ -42,12 +42,6 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
 
   const lastChanged = ref(state.value.last_changed);
 
-  console.log("init", {
-    value: localValue.value,
-    lastChanged: lastChanged.value,
-    entity: state.value.entity_id,
-  });
-
   watch(localValue, (newLocalValue) => {
     console.log({ newLocalValue, entity: state.value.entity_id });
   });
@@ -83,9 +77,6 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
 
   const extendObject = {
     lastChanged: computed(() => new Date(lastChanged.value)),
-    getOriginal() {
-      return localValue;
-    },
   };
 
   return extendRef(localValue, extendObject) as typeof localValue &
