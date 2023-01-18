@@ -1,11 +1,5 @@
 import type { FullfilledUseState } from "./useState.ts";
-import {
-  useDebounceFn,
-  reactive,
-  watch,
-  watchPausable,
-  nextTick,
-} from "../dep.ts";
+import { useDebounceFn, reactive, watch } from "../dep.ts";
 import type { MessageBase, HassEntity } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
@@ -61,12 +55,21 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
     brightness: getBrightnessFromAttribute(state.value),
     entity_id: state.value.entity_id,
     lastChanged: new Date(state.value.last_changed),
+    lock: false,
   });
 
   // Local state changes
-  const { pause, resume } = watchPausable(
-    localValues,
-    (newLocalValues: typeof localValues) => {
+  watch(
+    () => {
+      return { value: localValues.value, brightness: localValues.brightness };
+    },
+    (newLocalValues, oldLocalValues) => {
+      if (
+        newLocalValues.value === oldLocalValues.value &&
+        newLocalValues.brightness === oldLocalValues.brightness
+      ) {
+        return;
+      }
       if (debug) {
         console.log(`call(${state.value.entity_id}): updateHASSState`);
       }
@@ -74,16 +77,21 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
     }
   );
 
-  resume();
-
   // Incoming state changes from hass
   watch(
     () => state.value,
-    async (newEntityState) => {
-      pause();
+    (newEntityState) => {
+      if (debug) {
+        console.log(
+          `incoming(${state.value.entity_id}): value=${stringBoolToBool(
+            newEntityState.state
+          )} brightness=${getBrightnessFromAttribute(
+            newEntityState
+          )} lastChanged=${new Date(newEntityState.last_changed)}`
+        );
+      }
+
       localValues.lastChanged = new Date(newEntityState.last_changed);
-      await nextTick();
-      resume();
 
       const contextIndex = skipContexts.findIndex(
         (value) => value === newEntityState.context.id
@@ -93,11 +101,8 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
         skipContexts.splice(contextIndex, 1);
         return;
       }
-      pause();
       localValues.value = stringBoolToBool(newEntityState.state);
       localValues.brightness = getBrightnessFromAttribute(newEntityState);
-      await nextTick();
-      resume();
     }
   );
 

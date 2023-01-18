@@ -1,13 +1,5 @@
 import type { FullfilledUseState } from "./useState.ts";
-import {
-  useDebounceFn,
-  ref,
-  watch,
-  watchPausable,
-  extendRef,
-  computed,
-  nextTick,
-} from "../dep.ts";
+import { useDebounceFn, ref, watch, extendRef, computed } from "../dep.ts";
 import type { MessageBase, HassEntity, UnwrapNestedRefs } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
@@ -44,22 +36,20 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
   const lastChanged = ref(state.value.last_changed);
 
   // Local state changes
-  const { pause, resume } = watchPausable(
-    localValue,
-    (newLocalValue: typeof localValue.value) => {
-      if (debug) {
-        console.log(`call(${state.value.entity_id}): updateHASSState`);
-      }
-      updateHASSState(newLocalValue);
+  watch(localValue, (newLocalValue, oldLocalValue) => {
+    if (newLocalValue === oldLocalValue) {
+      return;
     }
-  );
-
-  resume();
+    if (debug) {
+      console.log(`call(${state.value.entity_id}): updateHASSState`);
+    }
+    updateHASSState(newLocalValue);
+  });
 
   // Incoming state changes from hass
   watch(
     () => state.value,
-    async (newEntityState) => {
+    (newEntityState) => {
       const contextIndex = skipContexts.findIndex(
         (value) => value === newEntityState.context.id
       );
@@ -68,11 +58,8 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
         skipContexts.splice(contextIndex, 1);
         return;
       }
-      pause();
       localValue.value = stringBoolToBool(newEntityState.state);
       lastChanged.value = newEntityState.last_changed;
-      await nextTick();
-      resume();
     }
   );
 
