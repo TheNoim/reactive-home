@@ -6,7 +6,6 @@
         }
     },
     "tasks": {
-        "run": "deno run --allow-read --allow-env='NODE_ENV' --allow-net index.ts",
-        "watch": "deno run --watch --allow-env='NODE_ENV' --allow-read --allow-net index.ts"
+        "test": "deno run --allow-all reactive_home/run.ts --root test-modules/"
     }
 }

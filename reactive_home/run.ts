@@ -1,7 +1,6 @@
-import { walk } from "https://deno.land/std@0.171.0/fs/mod.ts";
-import { parse } from "https://deno.land/std@0.171.0/flags/mod.ts";
-import { basename } from "https://deno.land/std@0.171.0/path/mod.ts";
-import { join } from "https://deno.land/std@0.171.0/path/mod.ts";
+import { parse } from "https://deno.land/std@0.173.0/flags/mod.ts";
+import { basename, dirname } from "https://deno.land/std@0.173.0/path/mod.ts";
+import { join } from "https://deno.land/std@0.173.0/path/mod.ts";
 
 const flags = parse(Deno.args, {
   string: ["root"],
@@ -13,55 +12,41 @@ async function executeScripts(abort: AbortSignal) {
     return;
   }
 
-  for await (const path of walk(flags.root)) {
-    if (!path.isFile) {
-      continue;
+  const args = [
+    "deno",
+    "run",
+    `--lock=${join(flags.root, "deno.lock")}`,
+    "--allow-read",
+    `--allow-env=NODE_ENV,HASS_LONG_LIVED_TOKEN,HASS_URL`,
+    "--allow-net",
+    "--unstable", // npm import
+  ];
+
+  const importMapPath = join(flags.root, "import_map.json");
+
+  try {
+    const fileInfo = Deno.statSync(importMapPath);
+
+    if (fileInfo && fileInfo.isFile) {
+      args.push(`--import-map=${importMapPath}`);
     }
-    if (abort.aborted) {
-      continue;
-    }
+    // deno-lint-ignore no-empty
+  } catch {}
 
-    if (path.path.includes(".deno")) {
-      continue;
-    }
+  const currentFileLocation = new URL(import.meta.url);
 
-    const fileName = basename(path.path);
+  const process = Deno.run({
+    cmd: [
+      ...args,
+      join(dirname(currentFileLocation.pathname), "./loader.ts"),
+      "--root",
+      flags.root,
+    ],
+  });
 
-    if (!/script\..+\.ts/gm.test(fileName)) {
-      continue;
-    }
-
-    console.info("Load script", path.path);
-
-    const args = [
-      "deno",
-      "run",
-      `--lock=${join(flags.root, "deno.lock")}`,
-      "--allow-read",
-      `--allow-env=NODE_ENV,HASS_LONG_LIVED_TOKEN,HASS_URL`,
-      "--allow-net",
-      "--unstable", // npm import
-    ];
-
-    const importMapPath = join(flags.root, "import_map.json");
-
-    try {
-      const fileInfo = Deno.statSync(importMapPath);
-
-      if (fileInfo && fileInfo.isFile) {
-        args.push(`--import-map=${importMapPath}`);
-      }
-      // deno-lint-ignore no-empty
-    } catch {}
-
-    const process = Deno.run({
-      cmd: [...args, path.path],
-    });
-
-    abort.addEventListener("abort", () => {
-      process.kill();
-    });
-  }
+  abort.addEventListener("abort", () => {
+    process.kill();
+  });
 }
 
 if (!flags.root) {

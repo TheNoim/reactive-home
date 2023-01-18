@@ -10,6 +10,7 @@ COPY --from=deno /deno /usr/local/bin/deno
 COPY run.sh /
 COPY deno.lock /
 COPY run.ts /
+COPY loader.ts
 
 RUN chmod a+x /run.sh
 
