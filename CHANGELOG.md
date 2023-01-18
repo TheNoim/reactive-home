@@ -1,5 +1,12 @@
 
 
+## [0.2.1](https://github.com/TheNoim/reactive-home/compare/0.2.0...0.2.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* useLightMapping ([e9f361f](https://github.com/TheNoim/reactive-home/commit/e9f361fee61282bf680472de6a05acbfba1e5d72))
+
 # [0.2.0](https://github.com/TheNoim/reactive-home/compare/0.1.4...0.2.0) (2023-01-18)
 
 
