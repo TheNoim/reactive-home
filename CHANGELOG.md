@@ -1,5 +1,12 @@
 
 
+## [0.2.5](https://github.com/TheNoim/reactive-home/compare/0.2.4...0.2.5) (2023-01-18)
+
+
+### Bug Fixes
+
+* use normal watch ([30b449f](https://github.com/TheNoim/reactive-home/commit/30b449f4326c70d0bda8ca3a287df17d8c71c096))
+
 ## [0.2.4](https://github.com/TheNoim/reactive-home/compare/0.2.3...0.2.4) (2023-01-18)
 
 ## [0.2.3](https://github.com/TheNoim/reactive-home/compare/0.2.2...0.2.3) (2023-01-18)
