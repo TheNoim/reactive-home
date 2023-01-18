@@ -22,13 +22,15 @@ export {
   extendRef,
   refAutoReset,
   watchDebounced,
-} from "npm:@vueuse/core@9.8.1";
+  useDebounceFn,
+  watchPausable,
+} from "npm:@vueuse/core@9.11.0";
 
 export { watch } from "npm:@vue/runtime-core@3.2.45";
 
 export { config as dotenvConfig } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
 
-export { Input as CliffyInput } from "https://deno.land/x/cliffy@v0.25.5/prompt/mod.ts";
+export { Input as CliffyInput } from "https://deno.land/x/cliffy@v0.25.7/prompt/mod.ts";
 
 export {
   subMilliseconds,
@@ -44,6 +46,6 @@ import SunCalc from "npm:suncalc3@2.0.5";
 // @deno-types="https://raw.githubusercontent.com/jkroso/parse-duration/89668a9b8b41cbc1c8a1509fc68e538dca649f36/index.d.ts"
 import parse from "https://raw.githubusercontent.com/jkroso/parse-duration/024c3fe89e3dfe208d5bbceb436f79832d127c92/index.mjs";
 
-export { join } from "https://deno.land/std@0.170.0/path/mod.ts";
+export { join } from "https://deno.land/std@0.173.0/path/mod.ts";
 
 export { SunCalc, parse as parseDuration };

@@ -3,6 +3,9 @@ export * from "./composeables/useBoolean.ts";
 export * from "./composeables/useLight.ts";
 export * from "./composeables/useState.ts";
 export * from "./composeables/useStateForDuration.ts";
+export * from "./composeables/useNewBoolean.ts";
+export * from "./composeables/useNewLight.ts";
+export * from "./composeables/useLightMapping.ts";
 
 export * from "./hass/config.ts";
 
