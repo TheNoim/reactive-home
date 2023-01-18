@@ -9,7 +9,10 @@ import {
 
 const sunState = await useAsyncState("sun.sun");
 
-const epo = useNewBoolean(await useAsyncState("binary_sensor.occupancy_2"));
+const epo = useNewBoolean(
+  await useAsyncState("binary_sensor.occupancy_2"),
+  true
+);
 
 const motionEntrenceState = await useAsyncState(
   "binary_sensor.arbeitszimmer_eingang_bewegungsmelder_occupancy"

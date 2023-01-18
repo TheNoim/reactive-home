@@ -6,6 +6,7 @@ import {
   watchPausable,
   extendRef,
   computed,
+  nextTick,
 } from "../dep.ts";
 import type { MessageBase, HassEntity, UnwrapNestedRefs } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
@@ -50,6 +51,7 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
   const { pause, resume } = watchPausable(
     localValue,
     (newLocalValue: typeof localValue.value) => {
+      console.log({ newLocalValue, entity: state.value.entity_id });
       updateHASSState(newLocalValue);
     }
   );
@@ -59,7 +61,7 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
   // Incoming state changes from hass
   watch(
     () => state.value,
-    (newEntityState) => {
+    async (newEntityState) => {
       const contextIndex = skipContexts.findIndex(
         (value) => value === newEntityState.context.id
       );
@@ -71,12 +73,20 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
       pause();
       localValue.value = stringBoolToBool(newEntityState.state);
       lastChanged.value = newEntityState.last_changed;
+      await nextTick();
       resume();
     }
   );
 
   const extendObject = {
-    lastChanged: computed(() => new Date(lastChanged.value)),
+    lastChanged: computed({
+      get() {
+        return new Date(lastChanged.value);
+      },
+      set(newValue) {
+        lastChanged.value = newValue.toISOString();
+      },
+    }),
   };
 
   return extendRef(localValue, extendObject) as typeof localValue &

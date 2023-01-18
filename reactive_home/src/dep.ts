@@ -26,7 +26,7 @@ export {
   watchPausable,
 } from "npm:@vueuse/core@9.10.0";
 
-export { watch } from "npm:@vue/runtime-core@3.2.45";
+export { watch, nextTick } from "npm:@vue/runtime-core@3.2.45";
 
 export { config as dotenvConfig } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
 

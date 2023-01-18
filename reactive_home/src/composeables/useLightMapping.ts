@@ -26,6 +26,7 @@ export function useLightMapping({
       if (debug) {
         console.log(`automation_toggle(${newEntityState.entity_id}): value`);
       }
+      isDisabled.lastChanged = new Date();
       isDisabled.value = true;
     }
 
@@ -42,6 +43,7 @@ export function useLightMapping({
           `automation_toggle(${newEntityState.entity_id}): brightness`
         );
       }
+      isDisabledBrightness.lastChanged = new Date();
       isDisabledBrightness.value = true;
     }
   });
@@ -75,6 +77,7 @@ export function useLightMapping({
             `isDisabled(${entity.entity_id}): reset time=${newShouldReEnableSince}`
           );
         }
+        isDisabled.lastChanged = new Date();
         isDisabled.value = false;
       }
       if (newShouldReEnableSinceBrightness >= 0 && isDisabledBrightness) {
@@ -83,6 +86,7 @@ export function useLightMapping({
             `isDisabledBrightness(${entity.entity_id}): reset time=${newShouldReEnableSinceBrightness}`
           );
         }
+        isDisabledBrightness.lastChanged = new Date();
         isDisabledBrightness.value = false;
       }
     },

@@ -1,5 +1,11 @@
 import type { FullfilledUseState } from "./useState.ts";
-import { useDebounceFn, reactive, watch, watchPausable } from "../dep.ts";
+import {
+  useDebounceFn,
+  reactive,
+  watch,
+  watchPausable,
+  nextTick,
+} from "../dep.ts";
 import type { MessageBase, HassEntity } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
@@ -73,9 +79,10 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
   // Incoming state changes from hass
   watch(
     () => state.value,
-    (newEntityState) => {
+    async (newEntityState) => {
       pause();
       localValues.lastChanged = new Date(newEntityState.last_changed);
+      await nextTick();
       resume();
 
       const contextIndex = skipContexts.findIndex(
@@ -89,6 +96,7 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
       pause();
       localValues.value = stringBoolToBool(newEntityState.state);
       localValues.brightness = getBrightnessFromAttribute(newEntityState);
+      await nextTick();
       resume();
     }
   );
