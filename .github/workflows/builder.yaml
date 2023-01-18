@@ -16,6 +16,7 @@ jobs:
   init:
     runs-on: ubuntu-latest
     name: Initialize builds
+    if: "startsWith(github.event.head_commit.message, 'chore(release): ')"
     outputs:
       changed_addons: ${{ steps.changed_addons.outputs.addons }}
       changed: ${{ steps.changed_addons.outputs.changed }}
