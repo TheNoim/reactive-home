@@ -1,5 +1,12 @@
 
 
+## [0.1.2](https://github.com/TheNoim/reactive-home/compare/0.1.1...0.1.2) (2023-01-18)
+
+
+### Bug Fixes
+
+* replace loader to load all scripts at once ([d4e6512](https://github.com/TheNoim/reactive-home/commit/d4e65129d887d5c8c783ec761e4bc4716a6413a7))
+
 ## [0.1.1](https://github.com/TheNoim/reactive-home/compare/0.1.0...0.1.1) (2023-01-18)
 
 # [0.1.0](https://github.com/TheNoim/reactive-home/compare/0.0.12...0.1.0) (2023-01-18)
