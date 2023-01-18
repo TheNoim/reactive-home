@@ -36,12 +36,9 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
   const lastChanged = ref(state.value.last_changed);
 
   // Local state changes
-  watch(localValue, (newLocalValue, oldLocalValue) => {
+  watch(localValue, (newLocalValue) => {
     if (skipNextWatch) {
       skipNextWatch = false;
-      return;
-    }
-    if (newLocalValue === oldLocalValue) {
       return;
     }
     if (debug) {
@@ -62,8 +59,10 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
         skipContexts.splice(contextIndex, 1);
         return;
       }
-      skipNextWatch = true;
-      localValue.value = stringBoolToBool(newEntityState.state);
+      if (localValue.value !== stringBoolToBool(newEntityState.state)) {
+        skipNextWatch = true;
+        localValue.value = stringBoolToBool(newEntityState.state);
+      }
       lastChanged.value = newEntityState.last_changed;
     }
   );
