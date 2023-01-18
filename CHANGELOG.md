@@ -1,5 +1,12 @@
 
 
+# [0.1.0](https://github.com/TheNoim/reactive-home/compare/0.0.12...0.1.0) (2023-01-18)
+
+
+### Features
+
+* new/better mapping composeable ([935e850](https://github.com/TheNoim/reactive-home/commit/935e850130dd7ee3504c30d9e1be712b459ab7c6))
+
 ## [0.0.12](https://github.com/TheNoim/reactive-home/compare/0.0.11...0.0.12) (2023-01-09)
 
 
