@@ -9,10 +9,7 @@ import {
 
 const sunState = await useAsyncState("sun.sun");
 
-const epo = useNewBoolean(
-  await useAsyncState("binary_sensor.occupancy_2"),
-  true
-);
+const epo = useNewBoolean(await useAsyncState("binary_sensor.occupancy_2"));
 
 const motionEntrenceState = await useAsyncState(
   "binary_sensor.arbeitszimmer_eingang_bewegungsmelder_occupancy"
@@ -64,7 +61,8 @@ const lightShouldBeOn = computed(() => {
 });
 
 const isDisabled = useNewBoolean(
-  await useAsyncState("input_boolean.arbeitszimmer_disableauto_state")
+  await useAsyncState("input_boolean.arbeitszimmer_disableauto_state"),
+  true
 );
 
 const autoEnableTime = await useAsyncState(
@@ -72,8 +70,6 @@ const autoEnableTime = await useAsyncState(
 );
 
 const kugel1 = useNewLight(await useAsyncState("light.0x2c1165fffed484a7"));
-
-console.log({ ss: lightShouldBeOn.value, kugel1: kugel1.value });
 
 useLightMapping({
   entity: kugel1,

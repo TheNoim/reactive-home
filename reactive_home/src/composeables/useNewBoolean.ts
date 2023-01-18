@@ -43,10 +43,6 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
 
   const lastChanged = ref(state.value.last_changed);
 
-  watch(localValue, (newLocalValue) => {
-    console.log({ newLocalValue, entity: state.value.entity_id });
-  });
-
   // Local state changes
   const { pause, resume } = watchPausable(
     localValue,

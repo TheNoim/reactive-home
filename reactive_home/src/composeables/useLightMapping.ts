@@ -28,6 +28,16 @@ export function useLightMapping({
       }
       isDisabled.lastChanged = new Date();
       isDisabled.value = true;
+    } else {
+      if (debug) {
+        console.log(
+          `automation_toggle(${
+            newEntityState.entity_id
+          }): value - no toggle newEntityState=${
+            newEntityState.value
+          } expectedValue=${unref(expectedValue)} isDisabled=${!!isDisabled}`
+        );
+      }
     }
 
     if (
