@@ -1,5 +1,12 @@
 
 
+## [0.2.2](https://github.com/TheNoim/reactive-home/compare/0.2.1...0.2.2) (2023-01-18)
+
+
+### Bug Fixes
+
+* infinity sync bug ([f2efd24](https://github.com/TheNoim/reactive-home/commit/f2efd24193d345b2c0429961d7bfb2497affd764))
+
 ## [0.2.1](https://github.com/TheNoim/reactive-home/compare/0.2.0...0.2.1) (2023-01-18)
 
 
