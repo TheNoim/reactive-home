@@ -1,5 +1,12 @@
 
 
+## [0.2.8](https://github.com/TheNoim/reactive-home/compare/0.2.7...0.2.8) (2023-01-19)
+
+
+### Bug Fixes
+
+* only detect external change for utilities ([4d6021b](https://github.com/TheNoim/reactive-home/commit/4d6021ba5534b4ba96ee4a6826321c08addebf80))
+
 ## [0.2.7](https://github.com/TheNoim/reactive-home/compare/0.2.6...0.2.7) (2023-01-18)
 
 
