@@ -1,4 +1,4 @@
-export * from "npm:home-assistant-js-websocket@8.0.1";
+export * from "https://esm.noim.io/home-assistant-js-websocket@8.0.1";
 
 export {
   computed,
@@ -8,13 +8,13 @@ export {
   unref,
   getCurrentScope,
   onScopeDispose,
-} from "npm:@vue/reactivity@3.2.45";
+} from "https://esm.noim.io/@vue/reactivity@3.2.45";
 
 export type {
   Ref,
   UnwrapNestedRefs,
   ComputedRef,
-} from "npm:@vue/reactivity@3.2.45";
+} from "https://esm.noim.io/@vue/reactivity@3.2.45";
 
 export {
   useNow,
@@ -24,9 +24,9 @@ export {
   watchDebounced,
   useDebounceFn,
   watchPausable,
-} from "npm:@vueuse/core@9.10.0";
+} from "https://esm.noim.io/@vueuse/core@9.11.0?deps=@vue/shared@3.2.45&externals=@vue/runtime-dom";
 
-export { watch, nextTick } from "npm:@vue/runtime-core@3.2.45";
+export { watch } from "https://esm.noim.io/@vue/runtime-core@3.2.45";
 
 export { config as dotenvConfig } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
 
@@ -38,13 +38,11 @@ export {
   eachMinuteOfInterval,
   subHours,
   addHours,
-} from "npm:date-fns@2.29.3";
+} from "https://esm.noim.io/date-fns@2.29.3?exports=subMilliseconds,subSeconds,eachMinuteOfInterval,subHours,addHours";
 
-// @deno-types="https://raw.githubusercontent.com/Hypnos3/suncalc3/609d315d7787d15ca3f4643f8b121839e8333cee/suncalc.d.ts"
-import SunCalc from "npm:suncalc3@2.0.5";
+import SunCalc from "https://esm.noim.io/suncalc3@2.0.5";
 
-// @deno-types="https://raw.githubusercontent.com/jkroso/parse-duration/89668a9b8b41cbc1c8a1509fc68e538dca649f36/index.d.ts"
-import parse from "https://raw.githubusercontent.com/jkroso/parse-duration/024c3fe89e3dfe208d5bbceb436f79832d127c92/index.mjs";
+import parse from "https://esm.noim.io/parse-duration@1.0.2";
 
 export { join } from "https://deno.land/std@0.173.0/path/mod.ts";
 
