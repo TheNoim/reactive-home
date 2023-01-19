@@ -1,5 +1,5 @@
 import type { FullfilledUseState } from "./useState.ts";
-import { useDebounceFn, reactive, watch } from "../dep.ts";
+import { useDebounceFn, reactive, watch, computed, extendRef } from "../dep.ts";
 import type { MessageBase, HassEntity } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
@@ -55,27 +55,48 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
     brightness: getBrightnessFromAttribute(state.value),
     entity_id: state.value.entity_id,
     lastChanged: new Date(state.value.last_changed),
-    lock: false,
   });
 
-  let skipNextWatch = false;
-
-  // Local state changes
-  watch(
-    () => {
-      return { value: localValues.value, brightness: localValues.brightness };
+  const exposedValue = computed({
+    get() {
+      return localValues.value;
     },
-    (newLocalValues) => {
-      if (skipNextWatch) {
-        skipNextWatch = false;
-        return;
-      }
+    set(newValue) {
+      localValues.value = newValue;
+      localValues.lastChanged = new Date();
       if (debug) {
-        console.log(`call(${state.value.entity_id}): updateHASSState`);
+        console.log(
+          `call(${state.value.entity_id}): updateHASSState (via value change)`
+        );
       }
-      updateHASSState(newLocalValues.value, newLocalValues.brightness);
-    }
-  );
+      updateHASSState(newValue, localValues.brightness);
+    },
+  });
+
+  const exposedBrightness = computed({
+    get() {
+      return localValues.brightness;
+    },
+    set(newValue) {
+      localValues.brightness = newValue;
+      localValues.lastChanged = new Date();
+      if (debug) {
+        console.log(
+          `call(${state.value.entity_id}): updateHASSState (via brightness change)`
+        );
+      }
+      updateHASSState(localValues.value, newValue);
+    },
+  });
+
+  const exposedLastChanged = computed({
+    get() {
+      return localValues.lastChanged;
+    },
+    set(newValue) {
+      localValues.lastChanged = newValue;
+    },
+  });
 
   // Incoming state changes from hass
   watch(
@@ -101,20 +122,25 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
         skipContexts.splice(contextIndex, 1);
         return;
       }
+
       if (localValues.value !== stringBoolToBool(newEntityState.state)) {
-        skipNextWatch = true;
         localValues.value = stringBoolToBool(newEntityState.state);
       }
       if (
         localValues.brightness !== getBrightnessFromAttribute(newEntityState)
       ) {
-        skipNextWatch = true;
         localValues.brightness = getBrightnessFromAttribute(newEntityState);
       }
     }
   );
 
-  return localValues;
+  const extendObject = {
+    brightness: exposedBrightness,
+    entity_id: state.value.entity_id,
+    lastChanged: exposedLastChanged,
+  };
+
+  return extendRef(exposedValue, extendObject);
 }
 
 export type UseNewLightEntity = ReturnType<typeof useNewLight>;

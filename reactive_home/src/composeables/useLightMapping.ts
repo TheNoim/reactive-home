@@ -21,42 +21,43 @@ export function useLightMapping({
   autoEnableTime,
   autoEnableTimeBrightness,
 }: UseLightMappingOptions) {
-  watch(entity, (newEntityState, oldEntityState) => {
-    if (newEntityState.value !== unref(expectedValue) && isDisabled) {
-      if (debug) {
-        console.log(`automation_toggle(${newEntityState.entity_id}): value`);
+  watch(
+    () => ({ value: entity.value, brightness: entity.brightness }),
+    (newEntityState, oldEntityState) => {
+      if (newEntityState.value !== unref(expectedValue) && isDisabled) {
+        if (debug) {
+          console.log(`automation_toggle(${entity.entity_id}): value`);
+        }
+        isDisabled.lastChanged = new Date();
+        isDisabled.value = true;
+      } else {
+        if (debug) {
+          console.log(
+            `automation_toggle(${
+              entity.entity_id
+            }): value - no toggle newEntityState=${
+              newEntityState.value
+            } expectedValue=${unref(expectedValue)} isDisabled=${!!isDisabled}`
+          );
+        }
       }
-      isDisabled.lastChanged = new Date();
-      isDisabled.value = true;
-    } else {
-      if (debug) {
-        console.log(
-          `automation_toggle(${
-            newEntityState.entity_id
-          }): value - no toggle newEntityState=${
-            newEntityState.value
-          } expectedValue=${unref(expectedValue)} isDisabled=${!!isDisabled}`
-        );
-      }
-    }
 
-    if (
-      expectedBrightness &&
-      newEntityState.value &&
-      isDisabledBrightness &&
-      unref(expectedBrightness) !== newEntityState.brightness &&
-      /** Skip initial value, because it might be different. Let it sync first */
-      oldEntityState.value
-    ) {
-      if (debug) {
-        console.log(
-          `automation_toggle(${newEntityState.entity_id}): brightness`
-        );
+      if (
+        expectedBrightness &&
+        newEntityState.value &&
+        isDisabledBrightness &&
+        unref(expectedBrightness) !== newEntityState.brightness &&
+        /** Skip initial value, because it might be different. Let it sync first */
+        oldEntityState.value
+      ) {
+        if (debug) {
+          console.log(`automation_toggle(${entity.entity_id}): brightness`);
+        }
+        isDisabledBrightness.lastChanged = new Date();
+        isDisabledBrightness.value = true;
       }
-      isDisabledBrightness.lastChanged = new Date();
-      isDisabledBrightness.value = true;
     }
-  });
+  );
 
   const autoEnableTimeParsed = parseAutoEnableTimeFactory(autoEnableTime);
 

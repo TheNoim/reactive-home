@@ -32,42 +32,42 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
   }, 50);
 
   const localValue = ref(stringBoolToBool(state.value.state));
-  let skipNextWatch = false;
   const lastChanged = ref(state.value.last_changed);
 
-  // Local state changes
-  watch(localValue, (newLocalValue) => {
-    if (skipNextWatch) {
-      skipNextWatch = false;
-      return;
-    }
-    if (debug) {
-      console.log(`call(${state.value.entity_id}): updateHASSState`);
-    }
-    updateHASSState(newLocalValue);
+  // External change hook
+  const exposedValue = computed({
+    get() {
+      return localValue.value;
+    },
+    set(newValue) {
+      localValue.value = newValue;
+      lastChanged.value = new Date().toISOString();
+      if (debug) {
+        console.log(`call(${state.value.entity_id}): updateHASSState`);
+      }
+      updateHASSState(newValue);
+    },
   });
 
   // Incoming state changes from hass
   watch(
     () => state.value,
     (newEntityState) => {
+      // If this is a change which we have send to HASS, then we can skip it
       const contextIndex = skipContexts.findIndex(
         (value) => value === newEntityState.context.id
       );
-
       if (contextIndex > -1) {
         skipContexts.splice(contextIndex, 1);
         return;
       }
-      if (localValue.value !== stringBoolToBool(newEntityState.state)) {
-        skipNextWatch = true;
-        localValue.value = stringBoolToBool(newEntityState.state);
-      }
+
+      localValue.value = stringBoolToBool(newEntityState.state);
       lastChanged.value = newEntityState.last_changed;
     }
   );
 
-  const extendObject = {
+  const extendedMeta = {
     lastChanged: computed({
       get() {
         return new Date(lastChanged.value);
@@ -78,8 +78,8 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
     }),
   };
 
-  return extendRef(localValue, extendObject) as typeof localValue &
-    UnwrapNestedRefs<typeof extendObject>;
+  return extendRef(exposedValue, extendedMeta) as typeof exposedValue &
+    UnwrapNestedRefs<typeof extendedMeta>;
 }
 
 export type UseNewBooleanEntity = ReturnType<typeof useNewBoolean>;
