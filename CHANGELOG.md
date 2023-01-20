@@ -1,5 +1,12 @@
 
 
+## [0.2.10](https://github.com/TheNoim/reactive-home/compare/0.2.9...0.2.10) (2023-01-20)
+
+
+### Bug Fixes
+
+* prevent the automation to undo users changes in some cases ([bfdea92](https://github.com/TheNoim/reactive-home/commit/bfdea927b97c86630fb5faea40ecfa026d3164e8))
+
 ## [0.2.9](https://github.com/TheNoim/reactive-home/compare/0.2.8...0.2.9) (2023-01-19)
 
 
