@@ -7,6 +7,7 @@ import {
   computed,
   useNow,
   subMilliseconds,
+  reactive,
 } from "../dep.ts";
 import type { MaybeRef } from "../lib/types.ts";
 import type { HassEntity, Ref } from "../dep.ts";
@@ -21,9 +22,23 @@ export function useLightMapping({
   autoEnableTime,
   autoEnableTimeBrightness,
 }: UseLightMappingOptions) {
+  const localEntity = reactive({
+    value: entity.value,
+    brightness: entity.brightness,
+    lastChanged: entity.lastChanged,
+  });
+
   watch(
-    () => ({ value: entity.value, brightness: entity.brightness }),
+    () => ({
+      value: entity.value,
+      brightness: entity.brightness,
+      lastChanged: entity.lastChanged,
+    }),
     (newEntityState, oldEntityState) => {
+      localEntity.value = newEntityState.value;
+      localEntity.brightness = newEntityState.brightness;
+      localEntity.lastChanged = newEntityState.lastChanged;
+
       if (newEntityState.value !== unref(expectedValue) && isDisabled) {
         if (debug) {
           console.log(`automation_toggle(${entity.entity_id}): value`);
@@ -109,10 +124,10 @@ export function useLightMapping({
       return -1;
     }
     if (
-      entity.value !== unref(expectedValue) &&
+      localEntity.value !== unref(expectedValue) &&
       /** Just use this as clock source, not for the actual calculation, because it might be behind */ now.value
     ) {
-      return new Date().getTime() - entity.lastChanged.getTime();
+      return new Date().getTime() - localEntity.lastChanged.getTime();
     }
     return -1;
   });
@@ -122,13 +137,13 @@ export function useLightMapping({
       return -1;
     }
     if (
-      entity.value &&
+      localEntity.value &&
       expectedBrightness &&
-      entity.brightness !== unref(expectedBrightness) &&
+      localEntity.brightness !== unref(expectedBrightness) &&
       /** Just use this as clock source, not for the actual calculation, because it might be behind */
       now.value
     ) {
-      return new Date().getTime() - entity.lastChanged.getTime();
+      return new Date().getTime() - localEntity.lastChanged.getTime();
     }
     return -1;
   });
@@ -143,7 +158,7 @@ export function useLightMapping({
               entity.entity_id
             }): value time=${newValueTime} expected=${unref(
               expectedValue
-            )} current=${entity.value}`
+            )} current=${localEntity.value}`
           );
         }
         entity.value = unref(expectedValue);
@@ -154,7 +169,7 @@ export function useLightMapping({
       if (newBrightnessTime >= 0 && expectedBrightnessValue) {
         if (debug) {
           console.log(
-            `out_of_sync(${entity.entity_id}): brightness time=${newBrightnessTime} expected=${expectedBrightnessValue} current=${entity.brightness}`
+            `out_of_sync(${entity.entity_id}): brightness time=${newBrightnessTime} expected=${expectedBrightnessValue} current=${localEntity.brightness}`
           );
         }
         entity.brightness = expectedBrightnessValue;
