@@ -1,5 +1,12 @@
 
 
+## [0.2.11](https://github.com/TheNoim/reactive-home/compare/0.2.10...0.2.11) (2023-01-21)
+
+
+### Bug Fixes
+
+* useNow and types ([6a86c77](https://github.com/TheNoim/reactive-home/commit/6a86c775acab311f23a1ee4364ac5de7fe955c62))
+
 ## [0.2.10](https://github.com/TheNoim/reactive-home/compare/0.2.9...0.2.10) (2023-01-20)
 
 

@@ -1,6 +1,6 @@
 name: "Reactive Home"
 description: "Reactive home automation runtime for home assistant"
-version: "0.2.10"
+version: "0.2.11"
 slug: "reactive_home"
 init: false
 arch:
