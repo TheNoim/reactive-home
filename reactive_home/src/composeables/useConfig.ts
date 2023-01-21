@@ -1,4 +1,4 @@
-import { connection } from "./connection.ts";
+import { connection } from "../hass/connection.ts";
 import { configColl } from "../dep.ts";
 import { reactive } from "../dep.ts";
 import type { HassConfig } from "../dep.ts";

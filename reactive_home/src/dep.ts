@@ -16,8 +16,9 @@ export type {
   ComputedRef,
 } from "https://esm.noim.io/@vue/reactivity@3.2.45";
 
+export { useNow } from "./composeables/useNow.ts";
+
 export {
-  useNow,
   whenever,
   extendRef,
   refAutoReset,
@@ -35,11 +36,12 @@ export { Input as CliffyInput } from "https://deno.land/x/cliffy@v0.25.7/prompt/
 export {
   subMilliseconds,
   subSeconds,
-  eachMinuteOfInterval,
   subHours,
   addHours,
-} from "https://esm.noim.io/date-fns@2.29.3?exports=subMilliseconds,subSeconds,eachMinuteOfInterval,subHours,addHours";
+  eachMinuteOfInterval,
+} from "https://cdn.skypack.dev/date-fns@2.29.3";
 
+// @deno-types="https://raw.githubusercontent.com/Hypnos3/suncalc3/609d315d7787d15ca3f4643f8b121839e8333cee/suncalc.d.ts"
 import SunCalc from "https://esm.noim.io/suncalc3@2.0.5";
 
 import parse from "https://esm.noim.io/parse-duration@1.0.2";

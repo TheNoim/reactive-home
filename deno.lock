@@ -1,6 +1,8 @@
 {
   "version": "2",
   "remote": {
+    "https://cdn.skypack.dev/-/date-fns@v2.29.3-0RSog6bigd3QCHssXhzG/dist=es2019,mode=imports/optimized/date-fns.js": "76c388491eb66a125296045d14baf2569c5bff73fbb742ecace8362426f027ae",
+    "https://cdn.skypack.dev/date-fns@2.29.3": "182208ebcfd101338f365571cd1d3dd90cab04ff66b14c2253234afb7b26f91f",
     "https://deno.land/std@0.170.0/_util/asserts.ts": "d0844e9b62510f89ce1f9878b046f6a57bf88f208a10304aab50efcb48365272",
     "https://deno.land/std@0.170.0/_util/os.ts": "8a33345f74990e627b9dfe2de9b040004b08ea5146c7c9e8fe9a29070d193934",
     "https://deno.land/std@0.170.0/encoding/base64.ts": "8605e018e49211efc767686f6f687827d7f5fd5217163e981d8d693105640d7a",
@@ -57,6 +59,8 @@
     "https://esm.noim.io/@vue/reactivity@3.2.45": "f62e7a148b6cdcf3406231d50ebb18e2dd4446b2fbfd1139588844cc20ce65fb",
     "https://esm.noim.io/@vue/runtime-core@3.2.45": "34a582c5e2caa7c572e24bed865b081aa694ba7b22f782b34fb95de3c6097f5d",
     "https://esm.noim.io/@vueuse/core@9.11.0?deps=@vue/shared@3.2.45&externals=@vue/runtime-dom": "3fee41102c379ef116c1fe354a508eb40eeb7fe30b723f15c46eefe4b31253c4",
+    "https://esm.noim.io/date-fns@2.29.3": "1b2ec960311dc0b31809654b2109993ac013d1d732b3dfe9085d27e76f67d943",
+    "https://esm.noim.io/date-fns@2.29.3/eachMinuteOfInterval": "43ebe565cee88a07092ba2fd9488d80727e1acc95f336a67b434c89aed1b8908",
     "https://esm.noim.io/date-fns@2.29.3?exports=subMilliseconds,subSeconds,eachMinuteOfInterval,subHours,addHours": "7860fab33dc27a89918fec6eb30ac1f01d4f17c44a5263b7569be2bd8001067b",
     "https://esm.noim.io/home-assistant-js-websocket@8.0.1": "a50e459fae7b291915399d29eec5b9285fb9eb478d9e917c12320d172fe6667c",
     "https://esm.noim.io/parse-duration@1.0.2": "8649ff89e374f812cb3067f9caa6df4c7182d762a95da366923590406ab86e1b",
@@ -82,6 +86,16 @@
     "https://esm.noim.io/v103/date-fns@2.29.3/X-dHMvYWRkSG91cnMsZWFjaE1pbnV0ZU9mSW50ZXJ2YWwsc3ViSG91cnMsc3ViTWlsbGlzZWNvbmRzLHN1YlNlY29uZHM/deno/date-fns.js": "a758f1e2720601d497355679a4cc5d85fbcfe90a38f2b91924a22b097763bfc4",
     "https://esm.noim.io/v103/date-fns@2.29.3/X-dHMvYWRkSG91cnMsZWFjaE1pbnV0ZU9mSW50ZXJ2YWwsc3ViSG91cnMsc3ViTWlsbGlzZWNvbmRzLHN1YlNlY29uZHM/esm~.d.ts": "854cdc32752c20a63ea380b17a93c803d6d1e06fa939fdc231732a7b35e8a906",
     "https://esm.noim.io/v103/date-fns@2.29.3/X-dHMvYWRkSG91cnMsZWFjaE1pbnV0ZU9mSW50ZXJ2YWwsc3ViSG91cnMsc3ViTWlsbGlzZWNvbmRzLHN1YlNlY29uZHM/typings.d.ts": "f039f5ad7b382ec2a62d571bdddd77b31d07e7dee2da05ab6f4c5811e3b3bc46",
+    "https://esm.noim.io/v103/date-fns@2.29.3/deno/date-fns.js": "48e5adc5f12afd729d0bf6cc9a45eeb27fdef13b55dd1cc9b7c573e18268b7ec",
+    "https://esm.noim.io/v103/date-fns@2.29.3/deno/eachMinuteOfInterval.js": "28f60515f18578a25a7b0102a80f99a85eee1aa34469f54da1f6e5a2b074ac7c",
+    "https://esm.noim.io/v103/date-fns@2.29.3/deno/esm/_lib/requiredArgs/index.js": "4a6083b5e30ca6613901cf72443606c693dde827f2409c31310557a008ee73a4",
+    "https://esm.noim.io/v103/date-fns@2.29.3/deno/esm/_lib/toInteger/index.js": "15ba88cbecb591431d3619b1f04207fd4888a69553db4fab36da12211fc50e8b",
+    "https://esm.noim.io/v103/date-fns@2.29.3/deno/esm/addMilliseconds/index.js": "c2688fd4b451bdc631a5f8595ddc153979c4f750bed005a3c72adf2486542096",
+    "https://esm.noim.io/v103/date-fns@2.29.3/deno/esm/addMinutes/index.js": "d3fa95663d17d26f2266cc4d7dd26cb84c54c429678d1cf8b8a21dcb6da9424d",
+    "https://esm.noim.io/v103/date-fns@2.29.3/deno/esm/startOfMinute/index.js": "14a844e0587bb9e9f7dc6ce60d69beacfd7f64e70ee3e10216480bd233b9e8d1",
+    "https://esm.noim.io/v103/date-fns@2.29.3/deno/esm/toDate/index.js": "7a98d15b20cc81f66afb9e83d176b1e90c2255c8fc391121ba6cf625fb0a7b22",
+    "https://esm.noim.io/v103/date-fns@2.29.3/esm~.d.ts": "854cdc32752c20a63ea380b17a93c803d6d1e06fa939fdc231732a7b35e8a906",
+    "https://esm.noim.io/v103/date-fns@2.29.3/typings.d.ts": "48563e8ada340dfbe430c2a82f7c58665b6675868976d9d07e0304eb4cc14d6f",
     "https://esm.noim.io/v103/home-assistant-js-websocket@8.0.1/deno/home-assistant-js-websocket.js": "0951ced7d7a65b57c74b6c666f3b9984089a642af4b8b17fca02265acf0edd1b",
     "https://esm.noim.io/v103/home-assistant-js-websocket@8.0.1/dist/auth.d.ts": "cbe1cc1e3c86ae5b175b1a227aa1b6cf7092f16b044fc86db1d7e4b64b94a8f4",
     "https://esm.noim.io/v103/home-assistant-js-websocket@8.0.1/dist/collection.d.ts": "bb8b4296b031f7c72beb9abe673726f4096c060f4bbcb78e4399189126ef74d1",
@@ -102,6 +116,7 @@
     "https://esm.noim.io/v103/suncalc3@2.0.5/suncalc.d.ts": "854cdc32752c20a63ea380b17a93c803d6d1e06fa939fdc231732a7b35e8a906",
     "https://esm.noim.io/v103/vue-demi@0.13.11/X-ZC9AdnVlL3NoYXJlZEAzLjIuNDU/deno/vue-demi.js": "b4ceb1e6d100fb2eb6dfde4f863072b2d1e1da3fe3de60c2f06f78eba1a31baa",
     "https://esm.noim.io/v103/vue-demi@0.13.11/X-ZC9AdnVlL3NoYXJlZEAzLjIuNDU/lib/index.d.ts": "91ae2264b2e6c72077cc60fe396d479b96405ffd5caaa32ef27b9c7c9632400b",
-    "https://esm.noim.io/v103/vue@3.2.45/dist/vue.d.ts": "96c5364d6f1db3a86915e007214218612a7ad2b1a85c043230d2d4d81df5501f"
+    "https://esm.noim.io/v103/vue@3.2.45/dist/vue.d.ts": "96c5364d6f1db3a86915e007214218612a7ad2b1a85c043230d2d4d81df5501f",
+    "https://raw.githubusercontent.com/Hypnos3/suncalc3/609d315d7787d15ca3f4643f8b121839e8333cee/suncalc.d.ts": "d820c99387da45df04b7a1906c310a95e5eaa313fb4256d16414aae083865b7a"
   }
 }

@@ -1,5 +1,5 @@
-import { useHassConfig } from "../hass/config.ts";
-import { useNow } from "../dep.ts";
+import { useHassConfig } from "../composeables/useConfig.ts";
+import { useNow } from "../composeables/useNow.ts";
 import { computed } from "../dep.ts";
 import { eachMinuteOfInterval, subHours, addHours, SunCalc } from "../dep.ts";
 
