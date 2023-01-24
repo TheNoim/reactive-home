@@ -1,5 +1,12 @@
 
 
+## [0.3.5](https://github.com/TheNoim/reactive-home/compare/0.3.4...0.3.5) (2023-01-24)
+
+
+### Bug Fixes
+
+* wrong version prefix ([2f44ac5](https://github.com/TheNoim/reactive-home/commit/2f44ac5c0bc24c0a46e7f075bf147a65a1904256))
+
 ## [0.3.4](https://github.com/TheNoim/reactive-home/compare/0.3.3...0.3.4) (2023-01-24)
 
 
