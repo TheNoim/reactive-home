@@ -1,5 +1,7 @@
 
 
+## [0.3.7](https://github.com/TheNoim/reactive-home/compare/0.3.6...0.3.7) (2023-01-24)
+
 ## [0.3.6](https://github.com/TheNoim/reactive-home/compare/0.3.5...0.3.6) (2023-01-24)
 
 
