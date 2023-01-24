@@ -1,5 +1,12 @@
 
 
+# [0.4.0](https://github.com/TheNoim/reactive-home/compare/0.3.7...0.4.0) (2023-01-24)
+
+
+### Features
+
+* add new utility useEntityValueEqualsForMinimumDuration ([47617c4](https://github.com/TheNoim/reactive-home/commit/47617c4abc95fe7105b250bb0df1d0104a890f9c))
+
 ## [0.3.7](https://github.com/TheNoim/reactive-home/compare/0.3.6...0.3.7) (2023-01-24)
 
 ## [0.3.6](https://github.com/TheNoim/reactive-home/compare/0.3.5...0.3.6) (2023-01-24)
