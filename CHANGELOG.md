@@ -1,5 +1,12 @@
 
 
+## [0.3.4](https://github.com/TheNoim/reactive-home/compare/0.3.3...0.3.4) (2023-01-24)
+
+
+### Bug Fixes
+
+* image name ([66d8201](https://github.com/TheNoim/reactive-home/commit/66d820135fd9bcaae36649d86652e15320b2cb72))
+
 ## [0.3.3](https://github.com/TheNoim/reactive-home/compare/0.3.2...0.3.3) (2023-01-24)
 
 ## [0.3.2](https://github.com/TheNoim/reactive-home/compare/0.3.1...0.3.2) (2023-01-24)
