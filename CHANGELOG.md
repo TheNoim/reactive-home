@@ -1,5 +1,19 @@
 
 
+# [0.3.0](https://github.com/TheNoim/reactive-home/compare/0.2.11...0.3.0) (2023-01-24)
+
+
+### Bug Fixes
+
+* restart worker if an error occured ([f21b15a](https://github.com/TheNoim/reactive-home/commit/f21b15af3df03688a77ece3723f9863b4f0d8d9b))
+* skip unavailable for incoming state change ([b77af9e](https://github.com/TheNoim/reactive-home/commit/b77af9eb940719b6da8596cb95ee6d905e95e45a))
+
+
+### Features
+
+* auto update import map version ([3f57398](https://github.com/TheNoim/reactive-home/commit/3f57398e1a800cdca9bcdf784e223cefbf28d09e))
+* update initial import map version ([b96b2c7](https://github.com/TheNoim/reactive-home/commit/b96b2c728efbeeded80331314592c296b52c3e45))
+
 ## [0.2.11](https://github.com/TheNoim/reactive-home/compare/0.2.10...0.2.11) (2023-01-21)
 
 
