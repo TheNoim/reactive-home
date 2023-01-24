@@ -28,7 +28,29 @@ for await (const path of walk(flags.root)) {
 
   console.info("Load script", path.path);
 
-  new Worker(new URL(join(Deno.cwd(), path.path), import.meta.url).href, {
-    type: "module",
-  });
+  const loadWorker = async () => {
+    while (true) {
+      const worker = new Worker(
+        new URL(join(Deno.cwd(), path.path), import.meta.url).href,
+        {
+          type: "module",
+        }
+      );
+
+      await new Promise((resolve) => {
+        worker.onerror = (error) => {
+          console.error(
+            `Terminate worker ${path.path} because of an error. Restart in 5s.`,
+            error
+          );
+          worker.terminate();
+          setTimeout(() => {
+            resolve(null);
+          }, 5 * 1000);
+        };
+      });
+    }
+  };
+
+  loadWorker();
 }
