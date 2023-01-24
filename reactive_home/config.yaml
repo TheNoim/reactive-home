@@ -3,7 +3,7 @@ description: "Reactive home automation runtime for home assistant"
 version: "0.3.3"
 slug: "reactive_home"
 init: false
-image: "ghcr.io/TheNoim/reactive-home"
+image: "ghcr.io/thenoim/reactive-home"
 arch:
   - amd64
 homeassistant_api: true
