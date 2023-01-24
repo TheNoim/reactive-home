@@ -62,6 +62,15 @@ export function useNewBoolean(state: FullfilledUseState, debug = false) {
         return;
       }
 
+      if (newEntityState.state === "unavailable") {
+        if (debug) {
+          console.log(
+            `incoming(${state.value.entity_id}): skip. New state is unavailable`
+          );
+        }
+        return;
+      }
+
       localValue.value = stringBoolToBool(newEntityState.state);
       lastChanged.value = newEntityState.last_changed;
     }

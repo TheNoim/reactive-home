@@ -112,6 +112,15 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
         );
       }
 
+      if (newEntityState.state === "unavailable") {
+        if (debug) {
+          console.log(
+            `incoming(${state.value.entity_id}): skip. New state is unavailable`
+          );
+        }
+        return;
+      }
+
       localValues.lastChanged = new Date(newEntityState.last_changed);
 
       const contextIndex = skipContexts.findIndex(
