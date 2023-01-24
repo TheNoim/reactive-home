@@ -9,7 +9,7 @@ mkdir -p /config/reactive-home
 if [[ ! -f /config/reactive-home/import_map.json ]]; then
   echo "{
     \"imports\": {
-        \"reactive-home\": \"https://deno.land/x/reactivehome@v0.2.12/mod.ts\"
+        \"reactive-home\": \"https://deno.land/x/reactivehome@0.2.12/mod.ts\"
     }
   }" >> /config/reactive-home/import_map.json
 fi
