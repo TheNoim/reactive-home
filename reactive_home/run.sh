@@ -14,4 +14,5 @@ if [[ ! -f /config/reactive-home/import_map.json ]]; then
   }" >> /config/reactive-home/import_map.json
 fi
 
+deno run --lock=/deno.lock --allow-read=/config/reactive-home/import_map.json,/config.yaml --allow-write=/config/reactive-home/import_map.json /update-import-map.ts
 deno run --lock=/deno.lock --allow-run --allow-read /run.ts --root /config/reactive-home

@@ -11,6 +11,8 @@ COPY run.sh /
 COPY deno.lock /
 COPY run.ts /
 COPY loader.ts /
+COPY config.yaml /
+COPY update-import-map.ts /
 
 RUN chmod a+x /run.sh
 
