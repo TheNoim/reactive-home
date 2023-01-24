@@ -26,10 +26,10 @@ for await (const path of walk(flags.root)) {
     continue;
   }
 
-  console.info("Load script", path.path);
-
   const loadWorker = async () => {
     while (true) {
+      console.info("Load script", path.path);
+
       const worker = new Worker(
         new URL(join(Deno.cwd(), path.path), import.meta.url).href,
         {
@@ -41,10 +41,11 @@ for await (const path of walk(flags.root)) {
         worker.onerror = (error) => {
           console.error(
             `Terminate worker ${path.path} because of an error. Restart in 5s.`,
-            error
+            error.error
           );
           worker.terminate();
           setTimeout(() => {
+            console.log(`Will now restart ${path.path}`);
             resolve(null);
           }, 5 * 1000);
         };
