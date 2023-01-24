@@ -1,5 +1,12 @@
 
 
+## [0.3.6](https://github.com/TheNoim/reactive-home/compare/0.3.5...0.3.6) (2023-01-24)
+
+
+### Bug Fixes
+
+* error output ([65a3672](https://github.com/TheNoim/reactive-home/commit/65a367284b90f5babf8fda1be75ed88d6df06116))
+
 ## [0.3.5](https://github.com/TheNoim/reactive-home/compare/0.3.4...0.3.5) (2023-01-24)
 
 
