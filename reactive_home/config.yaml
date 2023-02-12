@@ -1,6 +1,6 @@
 name: "Reactive Home"
 description: "Reactive home automation runtime for home assistant"
-version: "0.4.1"
+version: "0.4.2"
 slug: "reactive_home"
 init: false
 image: "ghcr.io/thenoim/reactive-home"
