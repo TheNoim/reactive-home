@@ -43,7 +43,12 @@ for await (const path of walk(flags.root)) {
             `Terminate worker ${path.path} because of an error. Restart in 5s.`,
             error.error
           );
-          worker.terminate();
+          try {
+            worker.terminate();
+          } catch (e) {
+            console.error(e);
+          }
+
           setTimeout(() => {
             console.log(`Will now restart ${path.path}`);
             resolve(null);
