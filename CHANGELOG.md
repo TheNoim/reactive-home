@@ -1,5 +1,12 @@
 
 
+## [0.4.1](https://github.com/TheNoim/reactive-home/compare/0.4.0...0.4.1) (2023-02-12)
+
+
+### Bug Fixes
+
+* error restart ([88bb695](https://github.com/TheNoim/reactive-home/commit/88bb6955f81fc7defc3010c7ca350596af70ac41))
+
 # [0.4.0](https://github.com/TheNoim/reactive-home/compare/0.3.7...0.4.0) (2023-01-24)
 
 
