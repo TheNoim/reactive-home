@@ -1,5 +1,12 @@
 
 
+## [0.4.4](https://github.com/TheNoim/reactive-home/compare/0.4.3...0.4.4) (2023-03-01)
+
+
+### Bug Fixes
+
+* brightness range ([cb0504a](https://github.com/TheNoim/reactive-home/commit/cb0504ab3b483d670ca32f9ae54c6497e8a115a2))
+
 ## [0.4.3](https://github.com/TheNoim/reactive-home/compare/0.4.2...0.4.3) (2023-03-01)
 
 
