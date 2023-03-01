@@ -1,6 +1,6 @@
-import { walk } from "https://deno.land/std@0.173.0/fs/mod.ts";
-import { parse } from "https://deno.land/std@0.173.0/flags/mod.ts";
-import { basename, join } from "https://deno.land/std@0.173.0/path/mod.ts";
+import { walk } from "https://deno.land/std@0.178.0/fs/mod.ts";
+import { parse } from "https://deno.land/std@0.178.0/flags/mod.ts";
+import { basename, join } from "https://deno.land/std@0.178.0/path/mod.ts";
 
 const flags = parse(Deno.args, {
   string: ["root"],
