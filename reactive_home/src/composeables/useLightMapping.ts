@@ -57,11 +57,19 @@ export function useLightMapping({
         }
       }
 
+      const expectedBrightnessValue = expectedBrightness
+        ? unref(expectedBrightness)
+        : null;
+
+      if (!expectedBrightnessValue) {
+        return;
+      }
+
       if (
-        expectedBrightness &&
         newEntityState.value &&
         isDisabledBrightness &&
-        unref(expectedBrightness) !== newEntityState.brightness &&
+        (newEntityState.brightness > expectedBrightnessValue + 1 ||
+          newEntityState.brightness < expectedBrightnessValue - 1) &&
         /** Skip initial value, because it might be different. Let it sync first */
         oldEntityState.value
       ) {
