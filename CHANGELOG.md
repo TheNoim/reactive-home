@@ -1,5 +1,12 @@
 
 
+## [0.4.6](https://github.com/TheNoim/reactive-home/compare/0.4.5...0.4.6) (2023-03-05)
+
+
+### Bug Fixes
+
+* disabled reset ([b1f72c7](https://github.com/TheNoim/reactive-home/commit/b1f72c7ed627f6368ca7f9340e02fee8e46a2921))
+
 ## [0.4.5](https://github.com/TheNoim/reactive-home/compare/0.4.4...0.4.5) (2023-03-05)
 
 
