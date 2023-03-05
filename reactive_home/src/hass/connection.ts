@@ -3,7 +3,7 @@ import {
   createConnection,
   createLongLivedTokenAuth,
   CliffyInput,
-  join,
+  join
 } from "../dep.ts";
 
 let { HASS_URL, HASS_LONG_LIVED_TOKEN } = dotenvConfig();

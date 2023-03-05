@@ -1,28 +1,17 @@
 import { connection } from "../hass/connection.ts";
-import { subscribeEntities, getStates } from "../dep.ts";
-import {
-  ref,
-  onScopeDispose,
-  computed,
-  getCurrentScope,
-  readonly,
-} from "../dep.ts";
-import type { HassEntity } from "../dep.ts";
+import { getStates, HassEntities, entitiesColl } from "../dep.ts";
+import { ref, computed } from "../dep.ts";
+
+const collection = entitiesColl(connection);
+
+const currentStates = ref<HassEntities | null>(collection.state);
+
+collection.subscribe((newState) => {
+  currentStates.value = newState;
+});
 
 export function useState(entity: string) {
-  const currentState = ref<HassEntity | null>(null);
-
-  const unsub = subscribeEntities(connection, (newState) => {
-    currentState.value = newState[entity];
-  });
-
-  if (getCurrentScope()) {
-    onScopeDispose(() => {
-      unsub();
-    });
-  }
-
-  return computed(() => currentState.value);
+  return computed(() => currentStates.value?.[entity]);
 }
 
 /**
@@ -41,19 +30,9 @@ export async function useAsyncState(entity: string) {
     throw new Error("Failed to fetch initial state for entity " + entity);
   }
 
-  const currentState = ref<HassEntity>(initialState);
-
-  const unsub = subscribeEntities(connection, (newState) => {
-    currentState.value = newState[entity];
+  return computed(() => {
+    return currentStates.value ? currentStates.value[entity] : initialState;
   });
-
-  if (getCurrentScope()) {
-    onScopeDispose(() => {
-      unsub();
-    });
-  }
-
-  return readonly(currentState);
 }
 
 export type FullfilledUseState = Awaited<ReturnType<typeof useAsyncState>>;
