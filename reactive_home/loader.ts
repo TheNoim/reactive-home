@@ -39,6 +39,7 @@ for await (const path of walk(flags.root)) {
 
       await new Promise((resolve) => {
         worker.onerror = (error) => {
+          error.preventDefault();
           console.error(
             `Terminate worker ${path.path} because of an error. Restart in 5s.`,
             error.error
