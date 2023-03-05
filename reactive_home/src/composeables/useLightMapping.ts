@@ -39,7 +39,11 @@ export function useLightMapping({
       localEntity.brightness = newEntityState.brightness;
       localEntity.lastChanged = newEntityState.lastChanged;
 
-      if (newEntityState.value !== unref(expectedValue) && isDisabled) {
+      if (
+        newEntityState.value !== unref(expectedValue) &&
+        isDisabled &&
+        !isDisabled.value
+      ) {
         if (debug) {
           console.log(`automation_toggle(${entity.entity_id}): value`);
         }
@@ -71,7 +75,8 @@ export function useLightMapping({
         (newEntityState.brightness > expectedBrightnessValue + 1 ||
           newEntityState.brightness < expectedBrightnessValue - 1) &&
         /** Skip initial value, because it might be different. Let it sync first */
-        oldEntityState.value
+        oldEntityState.value &&
+        !isDisabledBrightness.value
       ) {
         if (debug) {
           console.log(`automation_toggle(${entity.entity_id}): brightness`);
