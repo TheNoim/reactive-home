@@ -1,5 +1,12 @@
 
 
+## [0.4.5](https://github.com/TheNoim/reactive-home/compare/0.4.4...0.4.5) (2023-03-05)
+
+
+### Bug Fixes
+
+* worker error handling ([18df942](https://github.com/TheNoim/reactive-home/commit/18df9426fadcca077b787915cca62c19a9f6138d))
+
 ## [0.4.4](https://github.com/TheNoim/reactive-home/compare/0.4.3...0.4.4) (2023-03-01)
 
 
