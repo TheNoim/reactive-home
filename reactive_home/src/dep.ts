@@ -1,4 +1,4 @@
-export * from "https://esm.noim.io/home-assistant-js-websocket@8.0.1";
+export * from "https://esm.noim.io/home-assistant-js-websocket@8.1.0";
 
 export {
   computed,
@@ -29,7 +29,7 @@ export {
 
 export { watch } from "https://esm.noim.io/@vue/runtime-core@3.2.47";
 
-export { config as dotenvConfig } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
+export { config as dotenvConfig } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
 
 export { Input as CliffyInput } from "https://deno.land/x/cliffy@v0.25.7/prompt/mod.ts";
 
@@ -39,13 +39,13 @@ export {
   subHours,
   addHours,
   eachMinuteOfInterval,
-} from "https://cdn.skypack.dev/date-fns@2.29.3";
+} from "https://cdn.skypack.dev/date-fns@2.30.0";
 
 // @deno-types="https://raw.githubusercontent.com/Hypnos3/suncalc3/609d315d7787d15ca3f4643f8b121839e8333cee/suncalc.d.ts"
 import SunCalc from "https://esm.noim.io/suncalc3@2.0.5";
 
 import parse from "https://esm.noim.io/parse-duration@1.0.2";
 
-export { join } from "https://deno.land/std@0.178.0/path/mod.ts";
+export { join } from "https://deno.land/std@0.192.0/path/mod.ts";
 
 export { SunCalc, parse as parseDuration };
