@@ -1,5 +1,12 @@
 
 
+## [0.4.9](https://github.com/TheNoim/reactive-home/compare/0.4.8...0.4.9) (2023-07-07)
+
+
+### Bug Fixes
+
+* missing window ([9a33215](https://github.com/TheNoim/reactive-home/commit/9a332150151262079353fa06a1d635e017d20f30))
+
 ## [0.4.8](https://github.com/TheNoim/reactive-home/compare/0.4.7...0.4.8) (2023-07-07)
 
 ## [0.4.7](https://github.com/TheNoim/reactive-home/compare/0.4.6...0.4.7) (2023-07-04)
