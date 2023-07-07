@@ -1,3 +1,5 @@
+import './define-window.ts';
+
 export * from "https://esm.noim.io/home-assistant-js-websocket@8.1.0";
 
 export {
@@ -25,7 +27,7 @@ export {
   watchDebounced,
   useDebounceFn,
   watchPausable,
-} from "https://esm.noim.io/@vueuse/core@9.13.0?deps=@vue/shared@3.3.4&externals=@vue/runtime-dom";
+} from "https://esm.noim.io/@vueuse/core@10.2.1?deps=@vue/shared@3.3.4&externals=@vue/runtime-dom";
 
 export { watch } from "https://esm.noim.io/@vue/runtime-core@3.3.4";
 
