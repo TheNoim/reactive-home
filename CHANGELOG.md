@@ -1,5 +1,12 @@
 
 
+## [0.6.1](https://github.com/TheNoim/reactive-home/compare/0.6.0...0.6.1) (2023-12-09)
+
+
+### Bug Fixes
+
+* run permissions ([513c593](https://github.com/TheNoim/reactive-home/commit/513c5932f2844368d3f9f02bb9a25d9e58c8d534))
+
 # [0.6.0](https://github.com/TheNoim/reactive-home/compare/0.5.1...0.6.0) (2023-12-09)
 
 
