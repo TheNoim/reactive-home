@@ -1,5 +1,12 @@
 
 
+## [0.5.1](https://github.com/TheNoim/reactive-home/compare/0.5.0...0.5.1) (2023-12-09)
+
+
+### Bug Fixes
+
+* **ci:** use current build script ([da508de](https://github.com/TheNoim/reactive-home/commit/da508de1bf919c4f91de80d8fc22a6c5ea835b3c))
+
 # [0.5.0](https://github.com/TheNoim/reactive-home/compare/0.4.9...0.5.0) (2023-12-09)
 
 
