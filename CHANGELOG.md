@@ -1,5 +1,12 @@
 
 
+# [0.5.0](https://github.com/TheNoim/reactive-home/compare/0.4.9...0.5.0) (2023-12-09)
+
+
+### Features
+
+* add --allow-env, --allow-net and --allow-sys ([f689af1](https://github.com/TheNoim/reactive-home/commit/f689af11246a624c34c9cfa501e6ce563440d750))
+
 ## [0.4.9](https://github.com/TheNoim/reactive-home/compare/0.4.8...0.4.9) (2023-07-07)
 
 
