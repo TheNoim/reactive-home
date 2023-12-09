@@ -34,6 +34,9 @@ for await (const path of walk(flags.root)) {
         new URL(join(Deno.cwd(), path.path), import.meta.url).href,
         {
           type: "module",
+          deno: {
+            permissions: "inherit",
+          },
         }
       );
 
