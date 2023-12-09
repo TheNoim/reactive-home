@@ -17,8 +17,9 @@ async function executeScripts(abort: AbortSignal) {
     "run",
     `--lock=${join(flags.root, "deno.lock")}`,
     "--allow-read",
-    `--allow-env=NODE_ENV,HASS_LONG_LIVED_TOKEN,HASS_URL`,
+    "--allow-env",
     "--allow-net",
+    "--allow-sys",
     "--unstable", // npm import
   ];
 
