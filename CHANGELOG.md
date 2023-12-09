@@ -1,5 +1,12 @@
 
 
+# [0.6.0](https://github.com/TheNoim/reactive-home/compare/0.5.1...0.6.0) (2023-12-09)
+
+
+### Features
+
+* worker inherit permissions ([808aee9](https://github.com/TheNoim/reactive-home/commit/808aee9eaf96ad4f2403f715db257755fdfb6ef4))
+
 ## [0.5.1](https://github.com/TheNoim/reactive-home/compare/0.5.0...0.5.1) (2023-12-09)
 
 
