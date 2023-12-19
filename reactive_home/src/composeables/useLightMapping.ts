@@ -210,9 +210,11 @@ export type UseLightMappingOptions = {
 export function parseAutoEnableTimeFactory(
   input?: MaybeRef<number | HassEntity | string>
 ) {
+  const defaultValue = 15 * 60 * 1000;
+
   return computed(() => {
     if (!input) {
-      return 15 * 60 * 1000;
+      return defaultValue;
     }
     let value = unref(input);
     if (typeof value === "number") {
@@ -221,7 +223,7 @@ export function parseAutoEnableTimeFactory(
     if (typeof value === "object") {
       value = value.state;
     }
-    return parse(value, "ms");
+    return parse(value, "ms") ?? defaultValue;
   });
 }
 
