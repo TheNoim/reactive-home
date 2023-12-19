@@ -1,5 +1,7 @@
 import "./define-window.ts";
 
+import colors from "https://esm.noim.io/color-name@2.0.0";
+
 export * from "https://esm.noim.io/home-assistant-js-websocket@9.1.0";
 
 export {
@@ -17,6 +19,10 @@ export type {
   UnwrapNestedRefs,
   ComputedRef,
 } from "https://esm.noim.io/@vue/reactivity@3.3.11";
+
+export * from "https://deno.land/std@0.209.0/fmt/colors.ts";
+
+export * from "https://esm.noim.io/fast-equals@5.0.1";
 
 export { useNow } from "./composeables/useNow.ts";
 
@@ -48,6 +54,6 @@ import SunCalc from "https://esm.noim.io/suncalc3@2.0.5";
 
 import parse from "https://esm.noim.io/parse-duration@1.1.0";
 
-export { join } from "https://deno.land/std@0.208.0/path/mod.ts";
+export { join } from "https://deno.land/std@0.209.0/path/mod.ts";
 
-export { SunCalc, parse as parseDuration };
+export { SunCalc, parse as parseDuration, colors };
