@@ -1,5 +1,17 @@
 
 
+# [0.7.0](https://github.com/TheNoim/reactive-home/compare/0.6.1...0.7.0) (2023-12-19)
+
+
+### Bug Fixes
+
+* **type:** small type fix ([78d1e45](https://github.com/TheNoim/reactive-home/commit/78d1e45695b990e39e998a857051009ac10e1fea))
+
+
+### Features
+
+* color support for useNewLight ([9854f19](https://github.com/TheNoim/reactive-home/commit/9854f1907df579e4ccd0e1f10e4d1cc0305cb40a))
+
 ## [0.6.1](https://github.com/TheNoim/reactive-home/compare/0.6.0...0.6.1) (2023-12-09)
 
 
