@@ -72,8 +72,8 @@ export function useLightMapping({
       if (
         newEntityState.value &&
         isDisabledBrightness &&
-        (newEntityState.brightness > expectedBrightnessValue + 1 ||
-          newEntityState.brightness < expectedBrightnessValue - 1) &&
+        (newEntityState.brightness > expectedBrightnessValue ||
+          newEntityState.brightness < expectedBrightnessValue) &&
         /** Skip initial value, because it might be different. Let it sync first */
         oldEntityState.value &&
         !isDisabledBrightness.value
