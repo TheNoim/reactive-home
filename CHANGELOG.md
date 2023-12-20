@@ -1,5 +1,12 @@
 
 
+## [0.7.1](https://github.com/TheNoim/reactive-home/compare/0.7.0...0.7.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* only send brightness and rgb if changed ([4a5abf7](https://github.com/TheNoim/reactive-home/commit/4a5abf7af774a51cd289aaeeb21436379eb9a609))
+
 # [0.7.0](https://github.com/TheNoim/reactive-home/compare/0.6.1...0.7.0) (2023-12-19)
 
 
