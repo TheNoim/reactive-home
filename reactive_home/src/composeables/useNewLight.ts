@@ -100,7 +100,7 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
       //     `call(${state.value.entity_id}): updateHASSState (via value change)`
       //   );
       // }
-      updateHASSState(newValue, localValues.brightness, localValues.rgbColor);
+      updateHASSState(newValue);
     },
   });
 
@@ -127,7 +127,7 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
       //     `call(${state.value.entity_id}): updateHASSState (via brightness change)`
       //   );
       // }
-      updateHASSState(localValues.value, newValue, localValues.rgbColor);
+      updateHASSState(localValues.value, newValue);
     },
   });
 
@@ -148,11 +148,7 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
       localValues.rgbColor = newValue;
       localValues.lastChanged = new Date();
 
-      updateHASSState(
-        localValues.value,
-        localValues.brightness,
-        localValues.rgbColor
-      );
+      updateHASSState(localValues.value, undefined, localValues.rgbColor);
     },
   });
 
