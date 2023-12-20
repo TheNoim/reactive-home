@@ -1,5 +1,12 @@
 
 
+## [0.7.2](https://github.com/TheNoim/reactive-home/compare/0.7.1...0.7.2) (2023-12-20)
+
+
+### Bug Fixes
+
+* brightness out of sync ([5875398](https://github.com/TheNoim/reactive-home/commit/5875398efee5923b035c483e6b46ab1d622361ab))
+
 ## [0.7.1](https://github.com/TheNoim/reactive-home/compare/0.7.0...0.7.1) (2023-12-20)
 
 
