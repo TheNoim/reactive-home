@@ -1,5 +1,12 @@
 
 
+## [0.7.3](https://github.com/TheNoim/reactive-home/compare/0.7.2...0.7.3) (2023-12-20)
+
+
+### Bug Fixes
+
+* useBrightness max value ([98f422b](https://github.com/TheNoim/reactive-home/commit/98f422bfbb75387043a6ce0dbfecbaa3f262f347))
+
 ## [0.7.2](https://github.com/TheNoim/reactive-home/compare/0.7.1...0.7.2) (2023-12-20)
 
 

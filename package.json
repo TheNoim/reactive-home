@@ -7,5 +7,5 @@
     "scripts": {
         "release": "release-it --ci"
     },
-    "version": "0.7.2"
+    "version": "0.7.3"
 }
