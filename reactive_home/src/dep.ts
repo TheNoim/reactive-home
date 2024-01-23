@@ -32,7 +32,7 @@ export * from "https://esm.noim.io/fast-equals@5.0.1";
 export { useNow } from "./composeables/useNow.ts";
 
 // Update this manual with inspecting the esm url via curl -I and fixing the `x-typescript-types` url
-// @deno-types="https://esm.noim.io/v135/@vueuse/shared@10.7.0/X-YS92dWUtZGVtaTp2dWVAMy40LjE1CmQvQHZ1ZS9zaGFyZWRAMy40LjE1/index.d.ts"
+// @deno-types="https://esm.noim.io/v135/@vueuse/shared@10.7.0/X-ZC9AdnVlL3NoYXJlZEAzLjQuMTUsdnVlQDMuNC4xNQ/index.d.ts"
 export {
   whenever,
   extendRef,
@@ -42,7 +42,7 @@ export {
   watchPausable,
   toRef,
   tryOnScopeDispose,
-} from "https://esm.noim.io/@vueuse/shared@10.7.0?deps=@vue/shared@3.4.15&externals=@vue/runtime-dom&alias=vue-demi:vue@3.4.15";
+} from "https://esm.noim.io/@vueuse/shared@10.7.0?deps=@vue/shared@3.4.15,vue@3.4.15,&externals=@vue/runtime-dom,@vue/reactivity@3.4.15,@vue/runtime-core@3.4.15";
 
 export { watch } from "https://esm.noim.io/@vue/runtime-core@3.4.15";
 
