@@ -9,7 +9,13 @@ import type { Ref, UnwrapNestedRefs, MessageBase, HassEntity } from "../dep.ts";
  * @param debug Enable debug prints
  * @returns
  */
-export function useBoolean(entity: string, debug = false) {
+export function useBoolean(
+  entity: string,
+  debug = false
+): Ref<HassEntity | undefined> & {
+  bool: boolean;
+  set: (newValue: boolean) => Promise<void>;
+} {
   const state = useState(entity);
 
   const localBool: Ref<null | boolean> = refAutoReset(null, 5000);
@@ -33,7 +39,7 @@ export function useBoolean(entity: string, debug = false) {
     localBool.value = null;
   }
 
-  const bool: Ref<boolean> = computed({
+  const bool = computed<boolean>({
     get() {
       return typeof localBool.value === "boolean"
         ? localBool.value

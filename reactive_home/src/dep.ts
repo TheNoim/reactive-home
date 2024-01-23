@@ -12,20 +12,27 @@ export {
   unref,
   getCurrentScope,
   onScopeDispose,
-} from "https://esm.noim.io/@vue/reactivity@3.3.11";
+  shallowRef,
+} from "https://esm.noim.io/@vue/reactivity@3.4.15";
 
 export type {
   Ref,
   UnwrapNestedRefs,
   ComputedRef,
-} from "https://esm.noim.io/@vue/reactivity@3.3.11";
+  ShallowRef,
+  WritableComputedRef,
+} from "https://esm.noim.io/@vue/reactivity@3.4.15";
 
-export * from "https://deno.land/std@0.209.0/fmt/colors.ts";
+export * from "https://deno.land/std@0.212.0/fmt/colors.ts";
+
+export { join } from "https://deno.land/std@0.212.0/path/mod.ts";
 
 export * from "https://esm.noim.io/fast-equals@5.0.1";
 
 export { useNow } from "./composeables/useNow.ts";
 
+// Update this manual with inspecting the esm url via curl -I and fixing the `x-typescript-types` url
+// @deno-types="https://esm.noim.io/v135/@vueuse/shared@10.7.0/X-YS92dWUtZGVtaTp2dWVAMy40LjE1CmQvQHZ1ZS9zaGFyZWRAMy40LjE1/index.d.ts"
 export {
   whenever,
   extendRef,
@@ -33,27 +40,25 @@ export {
   watchDebounced,
   useDebounceFn,
   watchPausable,
-} from "https://esm.noim.io/@vueuse/core@10.7.0?deps=@vue/shared@3.3.11&externals=@vue/runtime-dom";
+  toRef,
+  tryOnScopeDispose,
+} from "https://esm.noim.io/@vueuse/shared@10.7.0?deps=@vue/shared@3.4.15&externals=@vue/runtime-dom&alias=vue-demi:vue@3.4.15";
 
-export { watch } from "https://esm.noim.io/@vue/runtime-core@3.3.11";
+export { watch } from "https://esm.noim.io/@vue/runtime-core@3.4.15";
 
 export { config as dotenvConfig } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
 
 export { Input as CliffyInput } from "https://deno.land/x/cliffy@v0.25.7/prompt/mod.ts";
 
-export {
-  subMilliseconds,
-  subSeconds,
-  subHours,
-  addHours,
-  eachMinuteOfInterval,
-} from "https://esm.noim.io/date-fns@2.30.0";
+export { subMilliseconds } from "https://esm.noim.io/date-fns@3.3.1/subMilliseconds";
+export { subSeconds } from "https://esm.noim.io/date-fns@3.3.1/subSeconds";
+export { subHours } from "https://esm.noim.io/date-fns@3.3.1/subHours";
+export { addHours } from "https://esm.noim.io/date-fns@3.3.1/addHours";
+export { eachMinuteOfInterval } from "https://esm.noim.io/date-fns@3.3.1/eachMinuteOfInterval";
 
 // @deno-types="https://raw.githubusercontent.com/Hypnos3/suncalc3/609d315d7787d15ca3f4643f8b121839e8333cee/suncalc.d.ts"
 import SunCalc from "https://esm.noim.io/suncalc3@2.0.5";
 
 import parse from "https://esm.noim.io/parse-duration@1.1.0";
-
-export { join } from "https://deno.land/std@0.209.0/path/mod.ts";
 
 export { SunCalc, parse as parseDuration, colors };

@@ -1,6 +1,14 @@
 import { connection } from "../hass/connection.ts";
 import { getStates, HassEntities, entitiesColl, watch } from "../dep.ts";
-import { ref, computed, red, gray, deepEqual } from "../dep.ts";
+import {
+  ref,
+  computed,
+  red,
+  gray,
+  deepEqual,
+  type ComputedRef,
+  type HassEntity,
+} from "../dep.ts";
 import { formatTime } from "../lib/time.ts";
 
 const collection = entitiesColl(connection);
@@ -11,7 +19,7 @@ collection.subscribe((newState) => {
   currentStates.value = newState;
 });
 
-export function useState(entity: string) {
+export function useState(entity: string): ComputedRef<HassEntity | undefined> {
   return computed(() => currentStates.value?.[entity]);
 }
 
@@ -27,7 +35,7 @@ export type UseAsyncStateOption = {
 export async function useAsyncState(
   entity: string,
   options: UseAsyncStateOption = {}
-) {
+): Promise<ComputedRef<HassEntity>> {
   const initialStates = await getStates(connection);
 
   const initialState = initialStates.find(

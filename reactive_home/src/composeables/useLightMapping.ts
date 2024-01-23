@@ -21,7 +21,7 @@ export function useLightMapping({
   debug,
   autoEnableTime,
   autoEnableTimeBrightness,
-}: UseLightMappingOptions) {
+}: UseLightMappingOptions): void {
   const localEntity = reactive({
     value: entity.value,
     brightness: entity.brightness,

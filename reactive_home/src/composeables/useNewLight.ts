@@ -7,13 +7,25 @@ import {
   extendRef,
   brightBlue,
   italic,
+  type Ref,
 } from "../dep.ts";
 import type { MessageBase, HassEntity } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
 import { formatTime } from "../lib/time.ts";
+import { toRef } from "../dep.ts";
 
-export function useNewLight(state: FullfilledUseState, debug = false) {
+type ExtendedObject = {
+  brightness: number;
+  entity_id: string;
+  lastChanged: Date;
+  rgbColor: [number, number, number];
+};
+
+export function useNewLight(
+  state: FullfilledUseState,
+  debug = false
+): ExtendedObject & Ref<boolean> {
   const skipContexts: string[] = [];
 
   function getBrightnessFromAttribute(currentState: HassEntity) {
@@ -200,14 +212,12 @@ export function useNewLight(state: FullfilledUseState, debug = false) {
     }
   );
 
-  const extendObject = {
+  return extendRef(toRef(exposedValue), {
     brightness: exposedBrightness,
     entity_id: state.value.entity_id,
     lastChanged: exposedLastChanged,
     rgbColor: exposedRgbColor,
-  };
-
-  return extendRef(exposedValue, extendObject);
+  });
 }
 
 export type UseNewLightEntity = ReturnType<typeof useNewLight>;

@@ -1,6 +1,6 @@
 import { sunPositionInPercent } from "./sun.ts";
 import type { MaybeComputed } from "./types.ts";
-import { computed, unref } from "../dep.ts";
+import { type ComputedRef, computed, unref } from "../dep.ts";
 
 export type UseBrightnessOptions = {
   /**
@@ -20,7 +20,7 @@ export type UseBrightnessOptions = {
  */
 export function useBrightness(
   options: MaybeComputed<UseBrightnessOptions> = {}
-) {
+): ComputedRef<number> {
   return computed(() => {
     const sunPercent = sunPositionInPercent.value;
 
