@@ -1,5 +1,12 @@
 
 
+## [0.7.5](https://github.com/TheNoim/reactive-home/compare/0.7.4...0.7.5) (2024-01-23)
+
+
+### Bug Fixes
+
+* @vueuse/shared import ([757efaa](https://github.com/TheNoim/reactive-home/commit/757efaa1b1adcd0df8c09a477caae66fc9255868))
+
 ## [0.7.4](https://github.com/TheNoim/reactive-home/compare/0.7.3...0.7.4) (2024-01-23)
 
 
