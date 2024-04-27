@@ -1,5 +1,12 @@
 
 
+## [0.7.8](https://github.com/TheNoim/reactive-home/compare/0.7.7...0.7.8) (2024-04-27)
+
+
+### Bug Fixes
+
+* readd lock file ([463d01f](https://github.com/TheNoim/reactive-home/commit/463d01f42f3d633d7165a493a3f61363d82cb2ff))
+
 ## [0.7.7](https://github.com/TheNoim/reactive-home/compare/0.7.6...0.7.7) (2024-04-27)
 
 
