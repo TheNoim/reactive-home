@@ -11,5 +11,6 @@ map:
   - config:rw
 devices:
   - /dev/fuse
+apparmor: unconfined
 privileged:
   - SYS_ADMIN
