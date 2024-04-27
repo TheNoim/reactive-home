@@ -1,5 +1,12 @@
 
 
+## [0.8.2](https://github.com/TheNoim/reactive-home/compare/0.8.1...0.8.2) (2024-04-27)
+
+
+### Bug Fixes
+
+* use fstab maybe ([be18c51](https://github.com/TheNoim/reactive-home/commit/be18c5117b37acd328ad6e16fd1d9decc4438506))
+
 ## [0.8.1](https://github.com/TheNoim/reactive-home/compare/0.8.0...0.8.1) (2024-04-27)
 
 
