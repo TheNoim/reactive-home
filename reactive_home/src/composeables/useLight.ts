@@ -3,9 +3,17 @@ import { ref, watch, computed } from "../dep.ts";
 import { extendRef } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
-import type { Ref, UnwrapNestedRefs, HassEntity, MessageBase } from "../dep.ts";
+import type { Ref, HassEntity, MessageBase, ComputedRef } from "../dep.ts";
 
-export function useLight(entity: string, debug = false) {
+export interface UseLightReturnType
+  extends ComputedRef<HassEntity | undefined> {
+  bool: boolean;
+  lightPct: number;
+  computedLightPct: number;
+  computedBool: boolean;
+}
+
+export function useLight(entity: string, debug = false): UseLightReturnType {
   const state = useState(entity);
 
   const skipContexts: string[] = [];
@@ -107,6 +115,5 @@ export function useLight(entity: string, debug = false) {
     computedBool,
   };
 
-  return extendRef(state, extend) as typeof state &
-    UnwrapNestedRefs<typeof extend>;
+  return extendRef(state, extend);
 }

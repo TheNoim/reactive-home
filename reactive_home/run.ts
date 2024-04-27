@@ -1,6 +1,6 @@
-import { parse } from "https://deno.land/std@0.208.0/flags/mod.ts";
-import { basename, dirname } from "https://deno.land/std@0.208.0/path/mod.ts";
-import { join } from "https://deno.land/std@0.208.0/path/mod.ts";
+import { parseArgs as parse } from "https://deno.land/std@0.223.0/cli/parse_args.ts";
+import { basename, dirname } from "https://deno.land/std@0.223.0/path/mod.ts";
+import { join } from "https://deno.land/std@0.223.0/path/mod.ts";
 
 const flags = parse(Deno.args, {
   string: ["root"],
@@ -20,7 +20,7 @@ async function executeScripts(abort: AbortSignal) {
     "--allow-env",
     "--allow-net",
     "--allow-sys",
-    "--unstable", // npm import
+    "--unstable-worker-options",
   ];
 
   const importMapPath = join(flags.root, "import_map.json");

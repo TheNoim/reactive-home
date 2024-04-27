@@ -119,7 +119,7 @@ export function mapState(config: MapStateConfig) {
     if (!value?.state) {
       return 15 * 60 * 1000;
     }
-    return parse(value.state, "ms");
+    return parse(value.state, "ms") ?? 15 * 60 * 1000;
   });
 
   const overwriteBrightnessResetTime = computed(() => {
@@ -133,7 +133,7 @@ export function mapState(config: MapStateConfig) {
     if (!value?.state) {
       return 15 * 60 * 1000;
     }
-    return parse(value.state, "ms");
+    return parse(value.state, "ms") ?? 15 * 60 * 1000;
   });
 
   const overwriteEntityHassStateReset = computed(

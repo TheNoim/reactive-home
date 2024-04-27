@@ -1,7 +1,12 @@
 import { useState } from "./useState.ts";
 import { computed, extendRef, refAutoReset } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
-import type { Ref, UnwrapNestedRefs, MessageBase, HassEntity } from "../dep.ts";
+import type { Ref, MessageBase, HassEntity } from "../dep.ts";
+
+export interface UseBooleanReturn extends Ref<HassEntity | undefined> {
+  bool: boolean;
+  set: (newValue: boolean) => Promise<void>;
+}
 
 /**
  * Switch device helper function. If a device supports only on and off, this can help manage this device as simple boolean.
@@ -9,13 +14,7 @@ import type { Ref, UnwrapNestedRefs, MessageBase, HassEntity } from "../dep.ts";
  * @param debug Enable debug prints
  * @returns
  */
-export function useBoolean(
-  entity: string,
-  debug = false
-): Ref<HassEntity | undefined> & {
-  bool: boolean;
-  set: (newValue: boolean) => Promise<void>;
-} {
+export function useBoolean(entity: string, debug = false): UseBooleanReturn {
   const state = useState(entity);
 
   const localBool: Ref<null | boolean> = refAutoReset(null, 5000);
@@ -56,6 +55,5 @@ export function useBoolean(
     set,
   };
 
-  return extendRef(state, extend) as typeof state &
-    UnwrapNestedRefs<typeof extend>;
+  return extendRef(state, extend);
 }

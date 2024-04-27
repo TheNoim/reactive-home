@@ -1,20 +1,17 @@
 import type { FullfilledUseState } from "./useState.ts";
 import { useDebounceFn, ref, watch, extendRef, computed } from "../dep.ts";
-import type {
-  MessageBase,
-  HassEntity,
-  UnwrapNestedRefs,
-  WritableComputedRef,
-} from "../dep.ts";
+import type { MessageBase, HassEntity, WritableComputedRef } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
+
+export interface UseNewBooleanReturn extends WritableComputedRef<boolean> {
+  lastChanged: Date;
+}
 
 export function useNewBoolean(
   state: FullfilledUseState,
   debug = false
-): WritableComputedRef<boolean> & {
-  lastChanged: Date;
-} {
+): UseNewBooleanReturn {
   const skipContexts: string[] = [];
 
   const updateHASSState = useDebounceFn(async (newState: boolean) => {
@@ -97,8 +94,7 @@ export function useNewBoolean(
     }),
   };
 
-  return extendRef(exposedValue, extendedMeta) as typeof exposedValue &
-    UnwrapNestedRefs<typeof extendedMeta>;
+  return extendRef(exposedValue, extendedMeta);
 }
 
 export type UseNewBooleanEntity = ReturnType<typeof useNewBoolean>;

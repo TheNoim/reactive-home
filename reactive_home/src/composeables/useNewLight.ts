@@ -15,17 +15,17 @@ import { stringBoolToBool } from "../lib/util.ts";
 import { formatTime } from "../lib/time.ts";
 import { toRef } from "../dep.ts";
 
-type ExtendedObject = {
+export interface UseNewLightReturn extends Ref<boolean> {
   brightness: number;
   entity_id: string;
   lastChanged: Date;
   rgbColor: [number, number, number];
-};
+}
 
 export function useNewLight(
   state: FullfilledUseState,
   debug = false
-): ExtendedObject & Ref<boolean> {
+): UseNewLightReturn {
   const skipContexts: string[] = [];
 
   function getBrightnessFromAttribute(currentState: HassEntity) {
