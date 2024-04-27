@@ -1,5 +1,12 @@
 
 
+## [0.8.1](https://github.com/TheNoim/reactive-home/compare/0.8.0...0.8.1) (2024-04-27)
+
+
+### Bug Fixes
+
+* hopefully fix config ¯\_(ツ)_/¯ ([bff44ad](https://github.com/TheNoim/reactive-home/commit/bff44ad7f95688ff93290c2b12818795384c5759))
+
 # [0.8.0](https://github.com/TheNoim/reactive-home/compare/0.7.8...0.8.0) (2024-04-27)
 
 
