@@ -1,5 +1,12 @@
 
 
+# [0.8.0](https://github.com/TheNoim/reactive-home/compare/0.7.8...0.8.0) (2024-04-27)
+
+
+### Features
+
+* use mergerfs to create shared cache between image and host ([fe15fde](https://github.com/TheNoim/reactive-home/commit/fe15fde037b3a9dad90f69c2ca8cf0e111edf645))
+
 ## [0.7.8](https://github.com/TheNoim/reactive-home/compare/0.7.7...0.7.8) (2024-04-27)
 
 
