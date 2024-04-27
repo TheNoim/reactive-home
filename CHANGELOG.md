@@ -1,5 +1,14 @@
 
 
+## [0.8.3](https://github.com/TheNoim/reactive-home/compare/0.8.2...0.8.3) (2024-04-27)
+
+
+### Reverts
+
+* Revert "feat: use mergerfs to create shared cache between image and host" ([1917559](https://github.com/TheNoim/reactive-home/commit/1917559cd185e24c4a48a589b14700b792271287))
+* Revert "fix: hopefully fix config ¯\_(ツ)_/¯" ([25c47e3](https://github.com/TheNoim/reactive-home/commit/25c47e3f11badc84786d61d93d831fecbd3779fb))
+* Revert "fix: use fstab maybe" ([8ab7df6](https://github.com/TheNoim/reactive-home/commit/8ab7df6c6a2c810a84d3c3c62347921f25020502))
+
 ## [0.8.2](https://github.com/TheNoim/reactive-home/compare/0.8.1...0.8.2) (2024-04-27)
 
 
