@@ -1,5 +1,5 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base-debian:bullseye
-ARG DENO_VERSION=1.42.4
+ARG DENO_VERSION=1.43.6
 
 FROM denoland/deno:bin-$DENO_VERSION AS deno
 
