@@ -6,7 +6,7 @@
         "./loader": "./src/runtime/loader.ts"
     },
     "name": "@noim/reactive-home",
-    "version": "0.8.8",
+    "version": "0.8.7",
     "fmt": {
         "options": {
             "indentWidth": 4
