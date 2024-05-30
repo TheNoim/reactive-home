@@ -1,5 +1,17 @@
 
 
+# [0.9.0](https://github.com/TheNoim/reactive-home/compare/0.8.10...0.9.0) (2024-05-30)
+
+
+### Bug Fixes
+
+* test for absolute url in worker ([f3cdfc2](https://github.com/TheNoim/reactive-home/commit/f3cdfc27109190bd65d45b2373520bed0be2c0f5))
+
+
+### Features
+
+* pre-cache ([faf706f](https://github.com/TheNoim/reactive-home/commit/faf706f35dc0223bd6d416fdbb439f30cf290aae))
+
 ## [0.8.10](https://github.com/TheNoim/reactive-home/compare/0.8.9...0.8.10) (2024-05-30)
 
 ## [0.8.9](https://github.com/TheNoim/reactive-home/compare/0.8.8...0.8.9) (2024-05-30)
