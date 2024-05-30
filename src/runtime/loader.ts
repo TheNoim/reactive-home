@@ -28,15 +28,20 @@ for await (const path of walk(flags.root)) {
 
   const loadWorker = async () => {
     while (true) {
-      const scriptUrl = toFileUrl(join(Deno.cwd(), path.path));
-      console.info("Load script", path.path, scriptUrl.href);
+      console.info("Load script", path.path);
 
-      const worker = new Worker(scriptUrl, {
-        type: "module",
-        deno: {
-          permissions: "inherit",
-        },
-      });
+      const worker = new Worker(
+        new URL(
+          join(Deno.cwd(), path.path),
+          toFileUrl(join(Deno.cwd(), flags.root!))
+        ).href,
+        {
+          type: "module",
+          deno: {
+            permissions: "inherit",
+          },
+        }
+      );
 
       await new Promise((resolve) => {
         worker.onerror = (error) => {
