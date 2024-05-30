@@ -2,7 +2,7 @@ import { join, basename } from "@std/path";
 import { parseArgs as parse } from "@std/cli";
 
 const flags = parse(Deno.args, {
-  string: ["root"],
+  string: ["root", "pkg"],
   boolean: ["local-test"],
 });
 
@@ -45,7 +45,9 @@ async function executeScripts(abort: AbortSignal) {
   await writer.write(
     new TextEncoder().encode(
       `import "${
-        flags["local-test"] ? "./src/runtime/loader.ts" : "reactive-home/loader"
+        flags["local-test"]
+          ? "./src/runtime/loader.ts"
+          : `${flags.pkg ?? "reactive-home"}/loader`
       }";`
     )
   );

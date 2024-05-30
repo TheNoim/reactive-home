@@ -16,5 +16,13 @@ fi
 
 deno run --lock=/deno.lock --allow-read=/config/reactive-home/import_map.json,/config.yaml --allow-write=/config/reactive-home/import_map.json /update-import-map.ts
 
+
+PKG_VERSION_SCRIPT="
+import file from '/config/reactive-home/import_map.json' with { type: 'json' };
+console.log(file.imports['reactive-home'])
+"
+
+PKG_VERSION=$(echo "$PKG_VERSION_SCRIPT" | deno run -)
+
 echo "Load runtime..."
-echo "import 'reactive-home/runtime'" | deno run --import-map=/config/reactive-home/import_map.json --allow-env --allow-net --allow-run --allow-sys --allow-read - --root /config/reactive-home
+echo "import '$PKG_VERSION/runtime'" | deno run --import-map=/config/reactive-home/import_map.json --allow-env --allow-net --allow-run --allow-sys --allow-read - --root /config/reactive-home --pkg "$PKG_VERSION"
