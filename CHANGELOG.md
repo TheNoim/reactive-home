@@ -1,5 +1,7 @@
 
 
+## [0.8.5](https://github.com/TheNoim/reactive-home/compare/0.8.4...0.8.5) (2024-05-30)
+
 ## [0.8.4](https://github.com/TheNoim/reactive-home/compare/0.8.3...0.8.4) (2024-05-29)
 
 ## [0.8.3](https://github.com/TheNoim/reactive-home/compare/0.8.2...0.8.3) (2024-04-27)
