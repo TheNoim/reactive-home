@@ -1,5 +1,50 @@
 
 
+# [0.9.0](https://github.com/TheNoim/reactive-home/compare/0.8.10...0.9.0) (2024-05-30)
+
+
+### Bug Fixes
+
+* test for absolute url in worker ([f3cdfc2](https://github.com/TheNoim/reactive-home/commit/f3cdfc27109190bd65d45b2373520bed0be2c0f5))
+
+
+### Features
+
+* pre-cache ([faf706f](https://github.com/TheNoim/reactive-home/commit/faf706f35dc0223bd6d416fdbb439f30cf290aae))
+
+## [0.8.10](https://github.com/TheNoim/reactive-home/compare/0.8.9...0.8.10) (2024-05-30)
+
+## [0.8.9](https://github.com/TheNoim/reactive-home/compare/0.8.8...0.8.9) (2024-05-30)
+
+
+### Bug Fixes
+
+* worker url ([eed566d](https://github.com/TheNoim/reactive-home/commit/eed566de4839d475f478a325ddcfc5604b81edeb))
+
+## [0.8.8](https://github.com/TheNoim/reactive-home/compare/0.8.7...0.8.8) (2024-05-30)
+
+
+### Bug Fixes
+
+* path loading ([ae03834](https://github.com/TheNoim/reactive-home/commit/ae038346f077bd7e8c01ce1845bcedde61d62fce))
+
+## [0.8.7](https://github.com/TheNoim/reactive-home/compare/0.8.6...0.8.7) (2024-05-30)
+
+
+### Bug Fixes
+
+* skip import map for pipe loading ([0c5fcc1](https://github.com/TheNoim/reactive-home/commit/0c5fcc12b7260d6d467a7dcb1707e6eef13982ef))
+
+## [0.8.6](https://github.com/TheNoim/reactive-home/compare/0.8.5...0.8.6) (2024-05-30)
+
+
+### Bug Fixes
+
+* **ci:** publish commit identity ([f7147d1](https://github.com/TheNoim/reactive-home/commit/f7147d179ba8de1e8b29c85d5cc95cb4a7d29468))
+* missing import map ([46f8e4e](https://github.com/TheNoim/reactive-home/commit/46f8e4ea36348caf7ac1883b80a1d681f7549828))
+
+## [0.8.5](https://github.com/TheNoim/reactive-home/compare/0.8.4...0.8.5) (2024-05-30)
+
 ## [0.8.4](https://github.com/TheNoim/reactive-home/compare/0.8.3...0.8.4) (2024-05-29)
 
 ## [0.8.3](https://github.com/TheNoim/reactive-home/compare/0.8.2...0.8.3) (2024-04-27)
