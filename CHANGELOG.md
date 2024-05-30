@@ -1,5 +1,12 @@
 
 
+## [0.9.2](https://github.com/TheNoim/reactive-home/compare/0.9.1...0.9.2) (2024-05-30)
+
+
+### Reverts
+
+* Revert "chore(deno): update deno to 1.43.6" ([73dbd96](https://github.com/TheNoim/reactive-home/commit/73dbd963eaf847b38de5b49a61fe5805a6f99c09))
+
 ## [0.9.1](https://github.com/TheNoim/reactive-home/compare/0.9.0...0.9.1) (2024-05-30)
 
 
