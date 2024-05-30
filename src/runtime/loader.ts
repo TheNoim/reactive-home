@@ -1,6 +1,6 @@
 import { walk } from "@std/fs";
 import { parseArgs as parse } from "@std/cli";
-import { basename, join, toFileUrl } from "@std/path";
+import { basename, join, toFileUrl, isAbsolute } from "@std/path";
 
 const flags = parse(Deno.args, {
   string: ["root"],
@@ -28,7 +28,9 @@ for await (const path of walk(flags.root)) {
 
   const loadWorker = async () => {
     while (true) {
-      const scriptUrl = toFileUrl(join(Deno.cwd(), path.path));
+      const scriptUrl = toFileUrl(
+        isAbsolute(path.path) ? path.path : join(Deno.cwd(), path.path)
+      );
       console.info("Load script", path.path, scriptUrl.href);
 
       const worker = new Worker(scriptUrl, {
