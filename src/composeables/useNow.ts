@@ -1,5 +1,5 @@
-import { shallowRef, tryOnScopeDispose } from "../dep.ts";
-import type { ShallowRef } from "../dep.ts";
+import { type ShallowRef, shallowRef } from "@vue/reactivity";
+import { tryOnScopeDispose } from "@vueuse/shared";
 
 export type UseNowOptions = { interval?: number };
 

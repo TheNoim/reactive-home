@@ -17,11 +17,18 @@
                 "search": "version: \"(?<version>{{semver}})\"",
                 "versionCaptureGroup": "version"
             },
-            "out": {
-                "file": "reactive_home/config.yaml",
-                "search": "version: \"{{semver}}\"",
-                "replace": "version: \"{{version}}\""
-            }
+            "out": [
+                {
+                    "file": "reactive_home/config.yaml",
+                    "search": "version: \"{{semver}}\"",
+                    "replace": "version: \"{{version}}\""
+                },
+                {
+                    "file": "deno.json",
+                    "search": "\"version\": \"{{semver}}\"",
+                    "replace": "\"version\": \"{{version}}\""
+                }
+            ]
         }
     },
     "npm": {

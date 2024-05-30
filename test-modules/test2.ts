@@ -1,4 +1,4 @@
-import { useState, watch, useBrightness } from "../reactive_home/src/mod.ts";
+import { useState, watch, useBrightness } from "../src/mod.ts";
 
 const lamp = useState("light.0x2c1165fffed484a7");
 

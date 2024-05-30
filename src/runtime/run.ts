@@ -1,9 +1,9 @@
-import { parseArgs as parse } from "https://deno.land/std@0.223.0/cli/parse_args.ts";
-import { basename, dirname } from "https://deno.land/std@0.223.0/path/mod.ts";
-import { join } from "https://deno.land/std@0.223.0/path/mod.ts";
+import { join, basename } from "@std/path";
+import { parseArgs as parse } from "@std/cli";
 
 const flags = parse(Deno.args, {
   string: ["root"],
+  boolean: ["local-test"],
 });
 
 async function executeScripts(abort: AbortSignal) {
@@ -13,7 +13,6 @@ async function executeScripts(abort: AbortSignal) {
   }
 
   const args = [
-    "deno",
     "run",
     `--lock=${join(flags.root, "deno.lock")}`,
     "--allow-read",
@@ -34,16 +33,24 @@ async function executeScripts(abort: AbortSignal) {
     // deno-lint-ignore no-empty
   } catch {}
 
-  const currentFileLocation = new URL(import.meta.url);
+  const process = new Deno.Command(Deno.execPath(), {
+    args: [...args, "-", "--root", flags.root],
+    stdin: "piped",
+    stdout: "inherit",
+    stderr: "inherit",
+  }).spawn();
 
-  const process = Deno.run({
-    cmd: [
-      ...args,
-      join(dirname(currentFileLocation.pathname), "./loader.ts"),
-      "--root",
-      flags.root,
-    ],
-  });
+  const writer = process.stdin.getWriter();
+
+  await writer.write(
+    new TextEncoder().encode(
+      `import "${
+        flags["local-test"] ? "./src/runtime/loader.ts" : "reactive-home/loader"
+      }";`
+    )
+  );
+
+  await writer.close();
 
   abort.addEventListener("abort", () => {
     process.kill();
@@ -86,5 +93,5 @@ for await (const event of watcher) {
 
   abortController.abort();
   abortController = new AbortController();
-  executeScripts(abortController.signal);
+  await executeScripts(abortController.signal);
 }

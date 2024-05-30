@@ -1,16 +1,18 @@
-import { UseNewLightEntity } from "./useNewLight.ts";
-import { UseNewBooleanEntity } from "./useNewBoolean.ts";
-import {
-  watch,
-  unref,
-  parseDuration as parse,
-  computed,
-  useNow,
-  subMilliseconds,
-  reactive,
-} from "../dep.ts";
+import type { UseNewLightEntity } from "./useNewLight.ts";
+import type { UseNewBooleanEntity } from "./useNewBoolean.ts";
 import type { MaybeRef } from "../lib/types.ts";
-import type { HassEntity, Ref } from "../dep.ts";
+import parse from "parse-duration";
+import {
+  type Ref,
+  computed,
+  reactive,
+  unref,
+  ComputedRef,
+} from "@vue/reactivity";
+import { watch } from "@vue/runtime-core";
+import { useNow } from "./useNow.ts";
+import type { HassEntity } from "home-assistant-js-websocket";
+import { subMilliseconds } from "date-fns";
 
 export function useLightMapping({
   entity,
@@ -209,7 +211,7 @@ export type UseLightMappingOptions = {
 
 export function parseAutoEnableTimeFactory(
   input?: MaybeRef<number | HassEntity | string>
-) {
+): ComputedRef<number> {
   const defaultValue = 15 * 60 * 1000;
 
   return computed(() => {
@@ -238,7 +240,7 @@ export function shouldReEnableSinceFactory(
   resetTimeSource: Ref<number>,
   nowSource: Ref<Date>,
   entity?: UseNewBooleanEntity
-) {
+): ComputedRef<number> {
   return computed(() => {
     if (!entity || !entity.value) {
       return -1;

@@ -1,6 +1,6 @@
+import { ComputedRef, computed, unref } from "@vue/reactivity";
 import { sunPositionInPercent } from "./sun.ts";
 import type { MaybeComputed } from "./types.ts";
-import { type ComputedRef, computed, unref } from "../dep.ts";
 
 export type UseBrightnessOptions = {
   /**

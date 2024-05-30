@@ -18,6 +18,5 @@ export * from "./lib/light.ts";
 export * from "./lib/sun.ts";
 export * from "./lib/types.ts";
 export * from "./lib/util.ts";
-export { colors } from "./dep.ts";
 
 export { connection } from "./hass/connection.ts";

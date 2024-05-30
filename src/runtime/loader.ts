@@ -1,6 +1,6 @@
-import { walk } from "https://deno.land/std@0.223.0/fs/mod.ts";
-import { parseArgs as parse } from "https://deno.land/std@0.223.0/cli/parse_args.ts";
-import { basename, join } from "https://deno.land/std@0.223.0/path/mod.ts";
+import { walk } from "@std/fs";
+import { parseArgs as parse } from "@std/cli";
+import { basename, join } from "@std/path";
 
 const flags = parse(Deno.args, {
   string: ["root"],
@@ -53,6 +53,8 @@ for await (const path of walk(flags.root)) {
           }, 5 * 1000);
         };
       });
+
+      worker.terminate();
     }
   };
 

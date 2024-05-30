@@ -5,7 +5,7 @@ import {
   useAsyncState,
   useLightMapping,
   useNewLight,
-} from "../reactive_home/src/mod.ts";
+} from "../src/mod.ts";
 
 const testToggle = useNewBoolean(
   await useAsyncState("input_boolean.virtual_test_toggle")

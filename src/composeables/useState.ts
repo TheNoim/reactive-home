@@ -1,15 +1,15 @@
-import { connection } from "../hass/connection.ts";
-import { getStates, HassEntities, entitiesColl, watch } from "../dep.ts";
 import {
-  ref,
-  computed,
-  red,
-  gray,
-  deepEqual,
-  type ComputedRef,
+  type HassEntities,
   type HassEntity,
-} from "../dep.ts";
+  entitiesColl,
+  getStates,
+} from "home-assistant-js-websocket";
+import { connection } from "../hass/connection.ts";
 import { formatTime } from "../lib/time.ts";
+import { red, gray } from "@std/fmt/colors";
+import { type ComputedRef, computed, ref } from "@vue/reactivity";
+import { watch } from "@vue/runtime-core";
+import { deepEqual } from "fast-equals";
 
 const collection = entitiesColl(connection);
 

@@ -25,9 +25,7 @@ if (version) {
 
   console.log(`Set reactivehome version to v${version}`);
 
-  importMapJson.imports[
-    "reactive-home"
-  ] = `https://deno.land/x/reactivehome@${version}/mod.ts`;
+  importMapJson.imports["reactive-home"] = `jsr:@noim/reactive-home@${version}`;
 
   await Deno.writeTextFile(
     "/config/reactive-home/import_map.json",

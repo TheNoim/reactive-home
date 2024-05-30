@@ -9,10 +9,12 @@ mkdir -p /config/reactive-home
 if [[ ! -f /config/reactive-home/import_map.json ]]; then
   echo "{
     \"imports\": {
-        \"reactive-home\": \"https://deno.land/x/reactivehome@0.2.12/mod.ts\"
+        \"reactive-home\": \"jsr:@noim/reactive-home@0.8.3\"
     }
   }" >> /config/reactive-home/import_map.json
 fi
 
 deno run --lock=/deno.lock --allow-read=/config/reactive-home/import_map.json,/config.yaml --allow-write=/config/reactive-home/import_map.json /update-import-map.ts
-deno run --lock=/deno.lock --allow-env --allow-net --allow-run --allow-sys --allow-read /run.ts --root /config/reactive-home
+
+echo "Load runtime..."
+echo "import 'reactive-home/runtime'" | deno run --allow-env --allow-net --allow-run --allow-sys --allow-read - --root /config/reactive-home
