@@ -31,16 +31,13 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.RELEASE_TOKEN }}
 
-      - name: Configuring Git and NPM
-        run: |
-          git config --global user.name "Nils Bergmann"
-          git config --global user.email "nilsbergmann@noim.io"
-
       - name: Release
         uses: juancarlosjr97/release-it-containerized@0.6.20
         with:
           github_token: ${{ secrets.RELEASE_TOKEN }}
           plugins_list: "@release-it/conventional-changelog,@j-ulrich/release-it-regex-bumper"
+          git_email: "nilsbergmann@noim.io"
+          git_username: "Nils Bergmann"
 
       - name: Publish package
         run: npx jsr publish
