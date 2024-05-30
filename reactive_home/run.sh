@@ -24,5 +24,7 @@ console.log(file.imports['reactive-home'])
 
 PKG_VERSION=$(echo "$PKG_VERSION_SCRIPT" | deno run -)
 
+cd /config/reactive-home
+
 echo "Load runtime..."
 echo "import '$PKG_VERSION/runtime'" | deno run --import-map=/config/reactive-home/import_map.json --allow-env --allow-net --allow-run --allow-sys --allow-read - --root /config/reactive-home --pkg "$PKG_VERSION"
