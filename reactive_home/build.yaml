@@ -7,4 +7,4 @@ labels:
   org.opencontainers.image.source: "https://github.com/TheNoim/reactive-home"
   org.opencontainers.image.licenses: "MIT"
 args:
-  DENO_VERSION: "1.43.6"
+  DENO_VERSION: "1.42.4"
