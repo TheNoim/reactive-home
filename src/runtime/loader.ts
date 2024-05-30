@@ -1,6 +1,6 @@
 import { walk } from "@std/fs";
 import { parseArgs as parse } from "@std/cli";
-import { basename, join } from "@std/path";
+import { basename, join, toFileUrl } from "@std/path";
 
 const flags = parse(Deno.args, {
   string: ["root"],
@@ -31,7 +31,10 @@ for await (const path of walk(flags.root)) {
       console.info("Load script", path.path);
 
       const worker = new Worker(
-        new URL(join(Deno.cwd(), path.path), import.meta.url).href,
+        new URL(
+          join(Deno.cwd(), path.path),
+          toFileUrl(join(Deno.cwd(), flags.root!))
+        ).href,
         {
           type: "module",
           deno: {
