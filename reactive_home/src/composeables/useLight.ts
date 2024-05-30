@@ -1,10 +1,9 @@
 import { useState } from "./useState.ts";
+import { ref, watch, computed } from "../dep.ts";
+import { extendRef } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
-import { type ComputedRef, type Ref, computed, ref } from "@vue/reactivity";
-import type { HassEntity, MessageBase } from "home-assistant-js-websocket";
-import { watch } from "@vue/runtime-core";
-import { extendRef } from "@vueuse/shared";
+import type { Ref, HassEntity, MessageBase, ComputedRef } from "../dep.ts";
 
 export interface UseLightReturnType
   extends ComputedRef<HassEntity | undefined> {

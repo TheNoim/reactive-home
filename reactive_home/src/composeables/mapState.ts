@@ -1,15 +1,18 @@
-import { useNow } from "./useNow.ts";
-import { whenever } from "@vueuse/shared";
+import {
+  useNow,
+  whenever,
+  watch,
+  computed,
+  unref,
+  subMilliseconds,
+  parseDuration as parse,
+} from "../dep.ts";
 import { useBoolean } from "./useBoolean.ts";
 import { stringBoolToBool } from "../lib/util.ts";
 import { useLight } from "./useLight.ts";
-import type { MaybeRef } from "../lib/types.ts";
-import type { HassEntity } from "home-assistant-js-websocket";
+import { MaybeRef } from "../lib/types.ts";
+import type { HassEntity } from "../dep.ts";
 import type { BooleanStates } from "../lib/util.ts";
-import { watch } from "@vue/runtime-core";
-import { computed, unref } from "@vue/reactivity";
-import { subMilliseconds } from "date-fns";
-import parse from "parse-duration";
 
 export type MapStateConfig = {
   entity: string;

@@ -1,10 +1,8 @@
 import type { FullfilledUseState } from "./useState.ts";
+import { useDebounceFn, ref, watch, extendRef, computed } from "../dep.ts";
+import type { MessageBase, HassEntity, WritableComputedRef } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
-import { type WritableComputedRef, computed, ref } from "@vue/reactivity";
-import { extendRef, useDebounceFn } from "@vueuse/shared";
-import type { HassEntity, MessageBase } from "home-assistant-js-websocket";
-import { watch } from "@vue/runtime-core";
 
 export interface UseNewBooleanReturn extends WritableComputedRef<boolean> {
   lastChanged: Date;

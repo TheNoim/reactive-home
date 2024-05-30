@@ -1,12 +1,19 @@
 import type { FullfilledUseState } from "./useState.ts";
+import {
+  useDebounceFn,
+  reactive,
+  watch,
+  computed,
+  extendRef,
+  brightBlue,
+  italic,
+  type Ref,
+} from "../dep.ts";
+import type { MessageBase, HassEntity } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
 import { stringBoolToBool } from "../lib/util.ts";
 import { formatTime } from "../lib/time.ts";
-import { type Ref, computed, reactive, toRef } from "@vue/reactivity";
-import type { HassEntity, MessageBase } from "home-assistant-js-websocket";
-import { extendRef, useDebounceFn } from "@vueuse/shared";
-import { brightBlue, italic } from "@std/fmt/colors";
-import { watch } from "@vue/runtime-core";
+import { toRef } from "../dep.ts";
 
 export interface UseNewLightReturn extends Ref<boolean> {
   brightness: number;

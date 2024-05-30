@@ -1,12 +1,13 @@
-import { configColl, type HassConfig } from "home-assistant-js-websocket";
 import { connection } from "../hass/connection.ts";
-import { reactive } from "@vue/reactivity";
+import { configColl } from "../dep.ts";
+import { reactive } from "../dep.ts";
+import type { HassConfig } from "../dep.ts";
 
 const configCollection = configColl(connection);
 
 await configCollection.refresh();
 
-export function useHassConfig(): HassConfig {
+export function useHassConfig() {
   const config = reactive(configCollection.state ?? ({} as HassConfig));
 
   configCollection.subscribe((newConfig) => {

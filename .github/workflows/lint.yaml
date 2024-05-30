@@ -14,7 +14,6 @@ jobs:
   find:
     name: Find add-ons
     runs-on: ubuntu-latest
-    if: "${{ !startsWith(github.event.head_commit.message, 'chore(release): ') }}"
     outputs:
       addons: ${{ steps.addons.outputs.addons_list }}
     steps:
@@ -28,7 +27,6 @@ jobs:
   lint:
     name: Lint add-on ${{ matrix.path }}
     runs-on: ubuntu-latest
-    if: "${{ !startsWith(github.event.head_commit.message, 'chore(release): ') }}"
     needs: find
     strategy:
       matrix:

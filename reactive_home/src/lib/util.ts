@@ -1,6 +1,6 @@
 export type BooleanStates = boolean | "on" | "off";
 
-export function stringBoolToBool(state: BooleanStates | string): boolean {
+export function stringBoolToBool(state: BooleanStates | string) {
   return state === "on"
     ? true
     : state === "off"

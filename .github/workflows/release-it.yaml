@@ -17,11 +17,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
-    if: "${{ !startsWith(github.event.head_commit.message, 'chore(release): ') }}"
-
-    permissions:
-      contents: read
-      id-token: write
+    if: "!startsWith(github.event.head_commit.message, 'chore(release): ')"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -36,11 +32,14 @@ jobs:
           git config --global user.name "Nils Bergmann"
           git config --global user.email "nilsbergmann@noim.io"
 
-      - name: Release
-        uses: juancarlosjr97/release-it-containerized@0.6.20
+      - uses: actions/setup-node@v2
         with:
-          github_token: ${{ secrets.RELEASE_TOKEN }}
-          plugins_list: "@release-it/conventional-changelog,@j-ulrich/release-it-regex-bumper"
+          node-version: "18"
 
-      - name: Publish package
-        run: npx jsr publish
+      - name: Installing dependencies
+        run: npm ci
+
+      - name: Release It
+        run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}

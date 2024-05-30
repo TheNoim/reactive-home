@@ -1,8 +1,7 @@
 import { useState } from "./useState.ts";
-import { extendRef, refAutoReset } from "@vueuse/shared";
+import { computed, extendRef, refAutoReset } from "../dep.ts";
 import { connection } from "../hass/connection.ts";
-import type { MessageBase, HassEntity } from "home-assistant-js-websocket";
-import { computed, type Ref } from "@vue/reactivity";
+import type { Ref, MessageBase, HassEntity } from "../dep.ts";
 
 export interface UseBooleanReturn extends Ref<HassEntity | undefined> {
   bool: boolean;

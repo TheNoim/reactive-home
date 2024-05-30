@@ -1,4 +1,4 @@
-import type { Ref } from "@vue/reactivity";
+import type { Ref } from "../dep.ts";
 
 export type BooleanLike = boolean | 1 | "1" | "" | 0;
 
