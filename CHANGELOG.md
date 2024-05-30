@@ -1,5 +1,12 @@
 
 
+## [0.8.7](https://github.com/TheNoim/reactive-home/compare/0.8.6...0.8.7) (2024-05-30)
+
+
+### Bug Fixes
+
+* skip import map for pipe loading ([0c5fcc1](https://github.com/TheNoim/reactive-home/commit/0c5fcc12b7260d6d467a7dcb1707e6eef13982ef))
+
 ## [0.8.6](https://github.com/TheNoim/reactive-home/compare/0.8.5...0.8.6) (2024-05-30)
 
 
