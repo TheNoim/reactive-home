@@ -1,5 +1,13 @@
 
 
+## [0.8.6](https://github.com/TheNoim/reactive-home/compare/0.8.5...0.8.6) (2024-05-30)
+
+
+### Bug Fixes
+
+* **ci:** publish commit identity ([f7147d1](https://github.com/TheNoim/reactive-home/commit/f7147d179ba8de1e8b29c85d5cc95cb4a7d29468))
+* missing import map ([46f8e4e](https://github.com/TheNoim/reactive-home/commit/46f8e4ea36348caf7ac1883b80a1d681f7549828))
+
 ## [0.8.5](https://github.com/TheNoim/reactive-home/compare/0.8.4...0.8.5) (2024-05-30)
 
 ## [0.8.4](https://github.com/TheNoim/reactive-home/compare/0.8.3...0.8.4) (2024-05-29)
