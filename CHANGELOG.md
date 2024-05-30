@@ -1,5 +1,12 @@
 
 
+## [0.8.9](https://github.com/TheNoim/reactive-home/compare/0.8.8...0.8.9) (2024-05-30)
+
+
+### Bug Fixes
+
+* worker url ([eed566d](https://github.com/TheNoim/reactive-home/commit/eed566de4839d475f478a325ddcfc5604b81edeb))
+
 ## [0.8.8](https://github.com/TheNoim/reactive-home/compare/0.8.7...0.8.8) (2024-05-30)
 
 
