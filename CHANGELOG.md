@@ -1,5 +1,12 @@
 
 
+## [0.8.8](https://github.com/TheNoim/reactive-home/compare/0.8.7...0.8.8) (2024-05-30)
+
+
+### Bug Fixes
+
+* path loading ([ae03834](https://github.com/TheNoim/reactive-home/commit/ae038346f077bd7e8c01ce1845bcedde61d62fce))
+
 ## [0.8.7](https://github.com/TheNoim/reactive-home/compare/0.8.6...0.8.7) (2024-05-30)
 
 
